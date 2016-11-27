@@ -4,6 +4,8 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
+import com.neu.mealpass.user.Account;
+
 public class ConnectionDao {
 	
 	static final String JDBC_DRIVER = "com.mysql.jdbc.Driver";
@@ -42,6 +44,10 @@ public class ConnectionDao {
 			e.printStackTrace();
 		}
 		return connection;
+	}
+	
+	public static boolean isAccountValid(Account account){
+		return true;
 	}
 
 }
