@@ -4,7 +4,7 @@ public class Ingredients {
 
 	private int id;
 	private IngredientsEnum ingredientsEnum;
-	private double likePrecentage;
+	private IngredientsLike ingredientsLike;
 	public int getId() {
 		return id;
 	}
@@ -17,12 +17,10 @@ public class Ingredients {
 	public void setIngredientsEnum(IngredientsEnum ingredientsEnum) {
 		this.ingredientsEnum = ingredientsEnum;
 	}
-	public double getLikePrecentage() {
-		return likePrecentage;
+	public IngredientsLike getIngredientsLike() {
+		return ingredientsLike;
 	}
-	public void setLikePrecentage(double likePrecentage) {
-		this.likePrecentage = likePrecentage;
+	public void setIngredientsLike(IngredientsLike ingredientsLike) {
+		this.ingredientsLike = ingredientsLike;
 	}
-	
-	
 }
