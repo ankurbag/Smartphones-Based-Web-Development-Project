@@ -7,9 +7,7 @@ public class MD5Hashing
 {
     public static String getDecodedPassword(String password) throws NoSuchAlgorithmException
     {
-    	password = "123456";
-
-        MessageDigest md = MessageDigest.getInstance("MD5");
+    	MessageDigest md = MessageDigest.getInstance("MD5");
         md.update(password.getBytes());
 
         byte byteData[] = md.digest();
