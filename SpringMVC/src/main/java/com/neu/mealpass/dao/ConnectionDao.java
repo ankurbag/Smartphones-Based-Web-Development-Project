@@ -80,26 +80,33 @@ public class ConnectionDao {
 	 * @param account
 	 * @return
 	 */
-	public static boolean isAccountValid(Connection conn,Account account){
+	public static boolean isAccountValid(Account account){
+		return false;
+	}
+	public static Account loginUser(Connection conn,String username,String password){
 		String query = "SELECT * from mealpaldb.account where username=? and password=?";
 		ResultSet rs = null;
+		Account account = null;
 		try {
 			PreparedStatement pstmt = conn.prepareStatement(query);
 
-			pstmt.setString(1, account.getUserName());
-			pstmt.setString(2, account.getPassword());
+			pstmt.setString(1, username);
+			pstmt.setString(2, password);
 			rs = pstmt.executeQuery();
 			System.out.println("Resultset.. "+ rs);
 			if(rs!=null && rs.next()){
-				return true;
+				account = new Account();
+				account.setUserName(rs.getString(0));
+				account.setPassword(rs.getString(1));
+				account.setToken(rs.getString(2));
 			}
 			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-			
 		}
-		return false;
+		
+		return account;
 	}
 	
 

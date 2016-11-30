@@ -54,17 +54,13 @@ public class LogInController {
 				e.printStackTrace();
 			}
 			
-			//Input Username & Password
-			Account account = new Account();
-			account.setUserName(userName);
-			account.setPassword(password);
-			account.setToken(userName+"_"+password);
-			
 			Connection connection = ConnectionDao.getConnection();
-			
-			boolean result = ConnectionDao.isAccountValid(connection, account) ;
+			Account account = ConnectionDao.loginUser(connection, userName, password);
 			try {
-				response.getWriter().write("Login Success : " + result);
+				if(account!=null)
+					response.getWriter().write("User Account with token: " + account.getToken());
+				else
+					response.getWriter().write("User Account not found");
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();

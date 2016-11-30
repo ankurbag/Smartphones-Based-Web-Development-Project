@@ -6,7 +6,7 @@
 </head>
 <body>
 <h1>
-	Hello world!  
+	Meal Pass iOS App Service
 </h1>
 
 <P>  The time on the server is ${serverTime}. </P>
