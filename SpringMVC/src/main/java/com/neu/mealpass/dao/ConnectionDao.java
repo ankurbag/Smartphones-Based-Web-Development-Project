@@ -3,6 +3,7 @@ package com.neu.mealpass.dao;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import com.neu.mealpass.user.Account;
@@ -47,12 +48,8 @@ public class ConnectionDao {
 		return connection;
 	}
 	
-	public static boolean isAccountValid(Account account){
-		return true;
-	}
-	
 	/**
-	 * 
+	 * Signup Service
 	 * @param conn
 	 * @param useraccount
 	 * @return
@@ -77,5 +74,33 @@ public class ConnectionDao {
 
 		return row;
 	}
+	/**
+	 * Login Service
+	 * @param conn
+	 * @param account
+	 * @return
+	 */
+	public static boolean isAccountValid(Connection conn,Account account){
+		String query = "SELECT * from mealpaldb.account where username=? and password=?";
+		ResultSet rs = null;
+		try {
+			PreparedStatement pstmt = conn.prepareStatement(query);
+
+			pstmt.setString(1, account.getUserName());
+			pstmt.setString(2, account.getPassword());
+			rs = pstmt.executeQuery();
+			System.out.println("Resultset.. "+ rs);
+			if(rs!=null && rs.next()){
+				return true;
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			
+		}
+		return false;
+	}
+	
 
 }
