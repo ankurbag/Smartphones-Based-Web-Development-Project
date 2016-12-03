@@ -101,9 +101,9 @@ public class ConnectionDao {
 			System.out.println("Resultset.. " + rs);
 			if (rs != null && rs.next()) {
 				account = new Account();
-				account.setUserName(rs.getString(0));
-				account.setPassword(rs.getString(1));
-				account.setToken(rs.getString(2));
+				account.setUserName(rs.getString(1));
+				account.setPassword(rs.getString(2));
+				account.setToken(rs.getString(3));
 			}
 
 		} catch (SQLException e) {
