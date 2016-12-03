@@ -9,9 +9,10 @@ import java.sql.SQLException;
 import com.neu.mealpass.user.Account;
 
 public class ConnectionDao {
-	
+
 	static final String JDBC_DRIVER = "com.mysql.jdbc.Driver";
-	static final String DB_URL = "jdbc:mysql://127.0.0.1:3306/mealpaldb";// mysql://newton.neu.edu:3306/usersdb","student","p@sswOrd"
+	// static final String DB_URL = "jdbc:mysql://127.0.0.1:3306/mealpaldb";
+	static final String DB_URL = "jdbc:mysql://aasqt87uhdjiu9.cpokblqfh08u.us-west-2.rds.amazonaws.com:3306/mealpaldb";
 	static final String USER = "root";
 	static final String PASS = "root1234";
 	private static ConnectionDao connectionDao;
@@ -47,14 +48,15 @@ public class ConnectionDao {
 		}
 		return connection;
 	}
-	
+
 	/**
 	 * Signup Service
+	 * 
 	 * @param conn
 	 * @param useraccount
 	 * @return
 	 */
-	
+
 	public static int createUserAccount(Connection conn, Account useraccount) {
 		String varname1 = "INSERT INTO mealpaldb.account(Username,Password,token) values(?,?,?)";
 		int row = -1;
@@ -65,25 +67,28 @@ public class ConnectionDao {
 			pstmt.setString(2, useraccount.getPassword());
 			pstmt.setString(3, useraccount.getToken());
 			row = pstmt.executeUpdate();
-			System.out.println("inserted "+ row);
+			System.out.println("inserted " + row);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-			
+
 		}
 
 		return row;
 	}
+
 	/**
 	 * Login Service
+	 * 
 	 * @param conn
 	 * @param account
 	 * @return
 	 */
-	public static boolean isAccountValid(Account account){
+	public static boolean isAccountValid(Account account) {
 		return false;
 	}
-	public static Account loginUser(Connection conn,String username,String password){
+
+	public static Account loginUser(Connection conn, String username, String password) {
 		String query = "SELECT * from mealpaldb.account where username=? and password=?";
 		ResultSet rs = null;
 		Account account = null;
@@ -93,21 +98,20 @@ public class ConnectionDao {
 			pstmt.setString(1, username);
 			pstmt.setString(2, password);
 			rs = pstmt.executeQuery();
-			System.out.println("Resultset.. "+ rs);
-			if(rs!=null && rs.next()){
+			System.out.println("Resultset.. " + rs);
+			if (rs != null && rs.next()) {
 				account = new Account();
 				account.setUserName(rs.getString(0));
 				account.setPassword(rs.getString(1));
 				account.setToken(rs.getString(2));
 			}
-			
+
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
+
 		return account;
 	}
-	
 
 }
