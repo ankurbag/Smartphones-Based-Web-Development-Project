@@ -7,14 +7,10 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import com.neu.mealpass.user.Account;
+import com.neu.mealpass.utils.ProjectConstants;
 
 public class ConnectionDao {
 
-	static final String JDBC_DRIVER = "com.mysql.jdbc.Driver";
-	// static final String DB_URL = "jdbc:mysql://127.0.0.1:3306/mealpaldb";
-	static final String DB_URL = "jdbc:mysql://aasqt87uhdjiu9.cpokblqfh08u.us-west-2.rds.amazonaws.com:3306/mealpaldb";
-	static final String USER = "root";
-	static final String PASS = "root1234";
 	private static ConnectionDao connectionDao;
 
 	private ConnectionDao() {
@@ -40,7 +36,7 @@ public class ConnectionDao {
 		// STEP 3: Open a connection
 		System.out.println("Connecting to database...");
 		try {
-			connection = DriverManager.getConnection(DB_URL, USER, PASS);
+			connection = DriverManager.getConnection(ProjectConstants.DB_URL, ProjectConstants.USER, ProjectConstants.PASS);
 			System.out.println("Success!!!");
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
