@@ -11,6 +11,8 @@ public class MealPass {
 	private int mealTotal;
 	private int mealUsed;
 	private User user;
+	private boolean active;
+	
 	public int getId() {
 		return id;
 	}
@@ -53,6 +55,11 @@ public class MealPass {
 	public void setUser(User user) {
 		this.user = user;
 	}
-	
+	public boolean isActive() {
+		return active;
+	}
+	public void setActive(boolean active) {
+		this.active = active;
+	}
 	
 }

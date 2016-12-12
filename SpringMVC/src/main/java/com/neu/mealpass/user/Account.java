@@ -5,6 +5,7 @@ public class Account {
 	private String userName;
 	private String password;
 	private String token;
+	private String accountType;
 	public String getUserName() {
 		return userName;
 	}
@@ -22,6 +23,12 @@ public class Account {
 	}
 	public void setToken(String token) {
 		this.token = token;
+	}
+	public String getAccountType() {
+		return accountType;
+	}
+	public void setAccountType(String accountType) {
+		this.accountType = accountType;
 	}
 	
 }

@@ -3,6 +3,7 @@ package com.neu.mealpass.response;
 import java.util.HashMap;
 import java.util.List;
 
+import com.neu.mealpass.meal.MealPass;
 import com.neu.mealpass.meal.MealPassOption;
 import com.neu.mealpass.meal.RestaurantMeal;
 import com.neu.mealpass.user.Account;
@@ -15,7 +16,7 @@ public class Response {
 	private HashMap<String, String> opaqueData;
 	private List<MealPassOption> mealPassOptions;
 	private List<RestaurantMeal> restaurantMeal;
-
+	private MealPass mealPass;
 	
 	public StatusCode getStatusCode() {
 		return statusCode;
@@ -70,6 +71,14 @@ public class Response {
 		}
 		
 		return false;
+	}
+
+	public MealPass getMealPass() {
+		return mealPass;
+	}
+
+	public void setMealPass(MealPass mealPass) {
+		this.mealPass = mealPass;
 	}
 	
 }

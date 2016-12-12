@@ -10,6 +10,7 @@ import java.util.List;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.neu.mealpass.meal.MealPass;
 import com.neu.mealpass.meal.MealPassOption;
 import com.neu.mealpass.meal.RestaurantMeal;
 import com.neu.mealpass.user.preference.Ingredients;
@@ -137,6 +138,26 @@ public class MealPassConnectionDao {
 	
 	public static List<RestaurantMeal> getTodaysRestaurantMeal(Connection conn, int userId){
 		// get list based on user preference like meal type, meal portion, ingredients like dislike
+		return null;
+	}
+	
+	public static MealPass orderMeal(Connection conn, String mealId, int userId){
+		
+		// check remaining meal, enter into order table, subtract meal from restaurant meal count, and subtract user meal remaining
+		
+		//populate mealPass and return
+		//MealPass mealPass = new MealPass();
+		
+		return null;
+	}
+	
+	public static MealPass deleteMeal(Connection conn,  String mealId, int userId){
+		
+		// delete from order table, increment meal from restaurant meal count, and increment user meal remaining
+		
+		//populate mealPass and return
+		//MealPass mealPass = new MealPass();
+		
 		return null;
 	}
 }

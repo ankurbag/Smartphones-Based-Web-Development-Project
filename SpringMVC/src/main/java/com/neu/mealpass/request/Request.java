@@ -2,10 +2,8 @@ package com.neu.mealpass.request;
 
 import java.io.Serializable;
 import java.util.HashMap;
-import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.neu.mealpass.meal.MealPassOption;
 import com.neu.mealpass.user.Account;
 import com.neu.mealpass.user.User;
 
@@ -20,6 +18,7 @@ public class Request implements Serializable {
 	private Account account;
 	private User user;
 	private HashMap<String, String> opaqueData;
+	private String botMessage;
 	
 	public Request(){
 		
@@ -44,6 +43,14 @@ public class Request implements Serializable {
 
 	public void setUser(User user) {
 		this.user = user;
+	}
+
+	public String getBotMessage() {
+		return botMessage;
+	}
+
+	public void setBotMessage(String botMessage) {
+		this.botMessage = botMessage;
 	}
 	
 }
