@@ -4,6 +4,14 @@ public class RestaurantMeal {
 
 	private Restaurant restaurant;
 	private Meal meal;
+	private int totalMeals;
+	
+	public int getTotalMeals() {
+		return totalMeals;
+	}
+	public void setTotalMeals(int totalMeals) {
+		this.totalMeals = totalMeals;
+	}
 	public Restaurant getRestaurant() {
 		return restaurant;
 	}
