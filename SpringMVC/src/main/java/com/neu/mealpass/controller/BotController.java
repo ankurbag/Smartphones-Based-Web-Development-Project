@@ -31,7 +31,7 @@ public class BotController {
 	public void botMessage(HttpServletRequest request,HttpServletResponse response, @RequestBody String requestBody){
 	
 		System.out.println(TAG+" botMessage "+requestBody);
-		StatusCode statusCode = StatusCode.STAUS_ERROR;
+		StatusCode statusCode = StatusCode.STATUS_ERROR;
 		Gson gson = new Gson();
 		if(requestBody != null){
 			Request responseRequest = gson.fromJson(requestBody, Request.class);

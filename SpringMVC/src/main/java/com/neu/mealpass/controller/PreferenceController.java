@@ -34,7 +34,7 @@ public class PreferenceController {
 	@RequestMapping(value = "/mealOption**", method = RequestMethod.POST)
 	public void getMealPassOption(HttpServletRequest request,HttpServletResponse response, @RequestBody String requestBody){
 		System.out.println("getMealPassOption "+requestBody);
-		StatusCode statusCode = StatusCode.STAUS_ERROR;
+		StatusCode statusCode = StatusCode.STATUS_ERROR;
 		Gson gson = new Gson();
 	    if(requestBody !=  null){
 	    	Request responseRequest = gson.fromJson(requestBody, Request.class);
@@ -82,7 +82,7 @@ public class PreferenceController {
 	@RequestMapping(value = "/setpreference**", method = RequestMethod.POST)
 	public void setPreference(HttpServletRequest request,HttpServletResponse response, @RequestBody String preferenceRequest){
 		System.out.println("setPreference "+preferenceRequest);
-		StatusCode statusCode = StatusCode.STAUS_ERROR;
+		StatusCode statusCode = StatusCode.STATUS_ERROR;
 		Gson gson = new Gson();
 		if(preferenceRequest != null){
 			PreferenceRequest preferenceRequest2 = gson.fromJson(preferenceRequest, PreferenceRequest.class);

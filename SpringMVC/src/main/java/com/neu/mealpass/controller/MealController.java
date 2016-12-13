@@ -32,7 +32,7 @@ public class MealController {
 	@RequestMapping(value = "/getMeals**", method = RequestMethod.POST)
 	public void getAllMeals(HttpServletRequest request,HttpServletResponse response, @RequestBody String requestBody){
 		System.out.println(TAG+" getAllMeals "+requestBody);
-		StatusCode statusCode = StatusCode.STAUS_ERROR;
+		StatusCode statusCode = StatusCode.STATUS_ERROR;
 		Gson gson = new Gson();
 		if(requestBody != null){
 			Request responseRequest = gson.fromJson(requestBody, Request.class);
@@ -82,7 +82,7 @@ public class MealController {
 	public void orderMeal(HttpServletRequest request,HttpServletResponse response, @RequestBody String requestBody){
 	
 		System.out.println(TAG+" orderMeal "+requestBody);
-		StatusCode statusCode = StatusCode.STAUS_ERROR;
+		StatusCode statusCode = StatusCode.STATUS_ERROR;
 		Gson gson = new Gson();
 		if(requestBody != null){
 			MealRequest responseRequest = gson.fromJson(requestBody, MealRequest.class);
@@ -137,7 +137,7 @@ public class MealController {
 	public void deleteMeal(HttpServletRequest request,HttpServletResponse response, @RequestBody String requestBody){
 	
 		System.out.println(TAG+" deleteMeal "+requestBody);
-		StatusCode statusCode = StatusCode.STAUS_ERROR;
+		StatusCode statusCode = StatusCode.STATUS_ERROR;
 		Gson gson = new Gson();
 		if(requestBody != null){
 			MealRequest responseRequest = gson.fromJson(requestBody, MealRequest.class);
