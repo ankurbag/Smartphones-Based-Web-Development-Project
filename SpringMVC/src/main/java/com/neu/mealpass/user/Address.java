@@ -2,6 +2,7 @@ package com.neu.mealpass.user;
 
 public class Address {
 
+	private int addressid;
 	private String address1;
 	private String address2;
 	private String city;
@@ -10,6 +11,13 @@ public class Address {
 	private String country;
 	private long lattitude;
 	private long longitude;
+	
+	public int getAddressid() {
+		return addressid;
+	}
+	public void setAddressid(int addressid) {
+		this.addressid = addressid;
+	}
 	public String getAddress1() {
 		return address1;
 	}
