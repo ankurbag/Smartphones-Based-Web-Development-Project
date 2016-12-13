@@ -13,6 +13,7 @@ public class DbConstants {
 		public static final String TABLE_MEAL = "mealpaldb.meal";
 		public static final String TABLE_MEAL_INGREDIENTS = "mealpaldb.meal_ingredients";
 		public static final String TABLE_MEALPASS_OPTION = "mealpaldb.mealPassOptions";
+		public static final String TABLE_MEAL_PREFERENCE = "mealpaldb.mealpreference";
 		public static final String TABLE_RESTAURANTS = "mealpaldb.restaurants";
 		public static final String TABLE_RESTAURANTS_INGREDIENTS = "mealpaldb.restaurants_ingredients";
 		public static final String TABLE_RESTAURANTS_MEAL = "mealpaldb.restaurantsMeal";

@@ -5,9 +5,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-
 import com.neu.mealpass.user.Account;
-import com.neu.mealpass.utils.ProjectConstants;
 
 public class ConnectionDao {
 
@@ -36,7 +34,7 @@ public class ConnectionDao {
 		// STEP 3: Open a connection
 		System.out.println("Connecting to database...");
 		try {
-			connection = DriverManager.getConnection(ProjectConstants.DB_URL, ProjectConstants.USER, ProjectConstants.PASS);
+			connection = DriverManager.getConnection(DbConstants.DB_URL, DbConstants.USER, DbConstants.PASSWORD);
 			System.out.println("Success!!!");
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
