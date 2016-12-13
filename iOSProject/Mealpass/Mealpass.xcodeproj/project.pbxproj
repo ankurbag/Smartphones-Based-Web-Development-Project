@@ -1,0 +1,499 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		D018E15F1DFF63870086DF02 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D018E15E1DFF63870086DF02 /* main.m */; };
+		D018E1621DFF63870086DF02 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D018E1611DFF63870086DF02 /* AppDelegate.m */; };
+		D018E1651DFF63870086DF02 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D018E1641DFF63870086DF02 /* ViewController.m */; };
+		D018E1681DFF63870086DF02 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D018E1661DFF63870086DF02 /* Main.storyboard */; };
+		D018E16A1DFF63870086DF02 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D018E1691DFF63870086DF02 /* Assets.xcassets */; };
+		D018E16D1DFF63870086DF02 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D018E16B1DFF63870086DF02 /* LaunchScreen.storyboard */; };
+		D018E1781DFF63870086DF02 /* MealpassTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D018E1771DFF63870086DF02 /* MealpassTests.m */; };
+		D018E1851DFF65F80086DF02 /* LoginControllerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D018E1841DFF65F80086DF02 /* LoginControllerViewController.m */; };
+		D018E18C1E0042E80086DF02 /* JSONModel.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D018E1891E003C690086DF02 /* JSONModel.framework */; };
+		D018E18D1E0042E80086DF02 /* JSONModel.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D018E1891E003C690086DF02 /* JSONModel.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		D018E18E1E0042E80086DF02 /* AFNetworking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D018E1871DFFA82D0086DF02 /* AFNetworking.framework */; };
+		D018E18F1E0042E80086DF02 /* AFNetworking.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D018E1871DFFA82D0086DF02 /* AFNetworking.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		D018E1931E005D5A0086DF02 /* LoginRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = D018E1921E005D5A0086DF02 /* LoginRequest.m */; };
+		D018E1951E005E020086DF02 /* Request.m in Sources */ = {isa = PBXBuildFile; fileRef = D018E1941E005E020086DF02 /* Request.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		D018E1741DFF63870086DF02 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D018E1521DFF63870086DF02 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D018E1591DFF63870086DF02;
+			remoteInfo = Mealpass;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		D018E1901E0042E80086DF02 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				D018E18D1E0042E80086DF02 /* JSONModel.framework in Embed Frameworks */,
+				D018E18F1E0042E80086DF02 /* AFNetworking.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		D018E15A1DFF63870086DF02 /* Mealpass.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Mealpass.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		D018E15E1DFF63870086DF02 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		D018E1601DFF63870086DF02 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		D018E1611DFF63870086DF02 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		D018E1631DFF63870086DF02 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		D018E1641DFF63870086DF02 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		D018E1671DFF63870086DF02 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		D018E1691DFF63870086DF02 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		D018E16C1DFF63870086DF02 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		D018E16E1DFF63870086DF02 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D018E1731DFF63870086DF02 /* MealpassTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MealpassTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		D018E1771DFF63870086DF02 /* MealpassTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MealpassTests.m; sourceTree = "<group>"; };
+		D018E1791DFF63870086DF02 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D018E1831DFF65F80086DF02 /* LoginControllerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginControllerViewController.h; sourceTree = "<group>"; };
+		D018E1841DFF65F80086DF02 /* LoginControllerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginControllerViewController.m; sourceTree = "<group>"; };
+		D018E1871DFFA82D0086DF02 /* AFNetworking.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AFNetworking.framework; path = Carthage/Build/iOS/AFNetworking.framework; sourceTree = "<group>"; };
+		D018E1891E003C690086DF02 /* JSONModel.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JSONModel.framework; path = Carthage/Build/iOS/JSONModel.framework; sourceTree = "<group>"; };
+		D018E1921E005D5A0086DF02 /* LoginRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginRequest.m; sourceTree = "<group>"; };
+		D018E1941E005E020086DF02 /* Request.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Request.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		D018E1571DFF63870086DF02 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D018E18C1E0042E80086DF02 /* JSONModel.framework in Frameworks */,
+				D018E18E1E0042E80086DF02 /* AFNetworking.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D018E1701DFF63870086DF02 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		D018E1511DFF63870086DF02 = {
+			isa = PBXGroup;
+			children = (
+				D018E15C1DFF63870086DF02 /* Mealpass */,
+				D018E1761DFF63870086DF02 /* MealpassTests */,
+				D018E15B1DFF63870086DF02 /* Products */,
+				D018E1861DFFA82C0086DF02 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		D018E15B1DFF63870086DF02 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				D018E15A1DFF63870086DF02 /* Mealpass.app */,
+				D018E1731DFF63870086DF02 /* MealpassTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		D018E15C1DFF63870086DF02 /* Mealpass */ = {
+			isa = PBXGroup;
+			children = (
+				D018E1911E005D2C0086DF02 /* request */,
+				D018E1821DFF64EF0086DF02 /* controllers */,
+				D018E1601DFF63870086DF02 /* AppDelegate.h */,
+				D018E1611DFF63870086DF02 /* AppDelegate.m */,
+				D018E1631DFF63870086DF02 /* ViewController.h */,
+				D018E1641DFF63870086DF02 /* ViewController.m */,
+				D018E1661DFF63870086DF02 /* Main.storyboard */,
+				D018E1691DFF63870086DF02 /* Assets.xcassets */,
+				D018E16B1DFF63870086DF02 /* LaunchScreen.storyboard */,
+				D018E16E1DFF63870086DF02 /* Info.plist */,
+				D018E15D1DFF63870086DF02 /* Supporting Files */,
+			);
+			path = Mealpass;
+			sourceTree = "<group>";
+		};
+		D018E15D1DFF63870086DF02 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				D018E15E1DFF63870086DF02 /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		D018E1761DFF63870086DF02 /* MealpassTests */ = {
+			isa = PBXGroup;
+			children = (
+				D018E1771DFF63870086DF02 /* MealpassTests.m */,
+				D018E1791DFF63870086DF02 /* Info.plist */,
+			);
+			path = MealpassTests;
+			sourceTree = "<group>";
+		};
+		D018E1821DFF64EF0086DF02 /* controllers */ = {
+			isa = PBXGroup;
+			children = (
+				D018E1831DFF65F80086DF02 /* LoginControllerViewController.h */,
+				D018E1841DFF65F80086DF02 /* LoginControllerViewController.m */,
+			);
+			name = controllers;
+			sourceTree = "<group>";
+		};
+		D018E1861DFFA82C0086DF02 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				D018E1891E003C690086DF02 /* JSONModel.framework */,
+				D018E1871DFFA82D0086DF02 /* AFNetworking.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		D018E1911E005D2C0086DF02 /* request */ = {
+			isa = PBXGroup;
+			children = (
+				D018E1921E005D5A0086DF02 /* LoginRequest.m */,
+				D018E1941E005E020086DF02 /* Request.m */,
+			);
+			name = request;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		D018E1591DFF63870086DF02 /* Mealpass */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D018E17C1DFF63870086DF02 /* Build configuration list for PBXNativeTarget "Mealpass" */;
+			buildPhases = (
+				D018E1561DFF63870086DF02 /* Sources */,
+				D018E1571DFF63870086DF02 /* Frameworks */,
+				D018E1581DFF63870086DF02 /* Resources */,
+				D018E1901E0042E80086DF02 /* Embed Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Mealpass;
+			productName = Mealpass;
+			productReference = D018E15A1DFF63870086DF02 /* Mealpass.app */;
+			productType = "com.apple.product-type.application";
+		};
+		D018E1721DFF63870086DF02 /* MealpassTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D018E17F1DFF63870086DF02 /* Build configuration list for PBXNativeTarget "MealpassTests" */;
+			buildPhases = (
+				D018E16F1DFF63870086DF02 /* Sources */,
+				D018E1701DFF63870086DF02 /* Frameworks */,
+				D018E1711DFF63870086DF02 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				D018E1751DFF63870086DF02 /* PBXTargetDependency */,
+			);
+			name = MealpassTests;
+			productName = MealpassTests;
+			productReference = D018E1731DFF63870086DF02 /* MealpassTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		D018E1521DFF63870086DF02 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0800;
+				ORGANIZATIONNAME = "Sabrish Ramamoorthy";
+				TargetAttributes = {
+					D018E1591DFF63870086DF02 = {
+						CreatedOnToolsVersion = 8.0;
+						DevelopmentTeam = 7FC4JG325C;
+						DevelopmentTeamName = "Sabrish Ramamoorthy (Personal Team)";
+						ProvisioningStyle = Automatic;
+					};
+					D018E1721DFF63870086DF02 = {
+						CreatedOnToolsVersion = 8.0;
+						DevelopmentTeam = 7FC4JG325C;
+						DevelopmentTeamName = "Sabrish Ramamoorthy (Personal Team)";
+						ProvisioningStyle = Automatic;
+						TestTargetID = D018E1591DFF63870086DF02;
+					};
+				};
+			};
+			buildConfigurationList = D018E1551DFF63870086DF02 /* Build configuration list for PBXProject "Mealpass" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = D018E1511DFF63870086DF02;
+			productRefGroup = D018E15B1DFF63870086DF02 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				D018E1591DFF63870086DF02 /* Mealpass */,
+				D018E1721DFF63870086DF02 /* MealpassTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		D018E1581DFF63870086DF02 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D018E16D1DFF63870086DF02 /* LaunchScreen.storyboard in Resources */,
+				D018E16A1DFF63870086DF02 /* Assets.xcassets in Resources */,
+				D018E1681DFF63870086DF02 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D018E1711DFF63870086DF02 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		D018E1561DFF63870086DF02 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D018E1651DFF63870086DF02 /* ViewController.m in Sources */,
+				D018E1621DFF63870086DF02 /* AppDelegate.m in Sources */,
+				D018E1851DFF65F80086DF02 /* LoginControllerViewController.m in Sources */,
+				D018E15F1DFF63870086DF02 /* main.m in Sources */,
+				D018E1931E005D5A0086DF02 /* LoginRequest.m in Sources */,
+				D018E1951E005E020086DF02 /* Request.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D018E16F1DFF63870086DF02 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D018E1781DFF63870086DF02 /* MealpassTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		D018E1751DFF63870086DF02 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D018E1591DFF63870086DF02 /* Mealpass */;
+			targetProxy = D018E1741DFF63870086DF02 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		D018E1661DFF63870086DF02 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D018E1671DFF63870086DF02 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		D018E16B1DFF63870086DF02 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D018E16C1DFF63870086DF02 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		D018E17A1DFF63870086DF02 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		D018E17B1DFF63870086DF02 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		D018E17D1DFF63870086DF02 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
+				INFOPLIST_FILE = Mealpass/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.neu.Mealpass;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		D018E17E1DFF63870086DF02 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
+				INFOPLIST_FILE = Mealpass/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.neu.Mealpass;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		D018E1801DFF63870086DF02 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = MealpassTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.neu.MealpassTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Mealpass.app/Mealpass";
+			};
+			name = Debug;
+		};
+		D018E1811DFF63870086DF02 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = MealpassTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.neu.MealpassTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Mealpass.app/Mealpass";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		D018E1551DFF63870086DF02 /* Build configuration list for PBXProject "Mealpass" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D018E17A1DFF63870086DF02 /* Debug */,
+				D018E17B1DFF63870086DF02 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D018E17C1DFF63870086DF02 /* Build configuration list for PBXNativeTarget "Mealpass" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D018E17D1DFF63870086DF02 /* Debug */,
+				D018E17E1DFF63870086DF02 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		D018E17F1DFF63870086DF02 /* Build configuration list for PBXNativeTarget "MealpassTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D018E1801DFF63870086DF02 /* Debug */,
+				D018E1811DFF63870086DF02 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = D018E1521DFF63870086DF02 /* Project object */;
+}
