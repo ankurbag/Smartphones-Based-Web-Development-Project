@@ -7,6 +7,10 @@
 //
 
 #import "LoginControllerViewController.h"
+#import "BaseRequestArgs.h"
+#import "LoginRequest.h"
+#import "RequestStatus.h"
+
 
 @interface LoginControllerViewController ()
 
@@ -17,7 +21,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+     _loadingAnimationView = [LoadingAnimationView new];
 }
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -34,4 +40,21 @@
 }
 */
 
+- (IBAction)signIn:(id)sender {
+    
+    LoginRequest *loginRequest = [[LoginRequest alloc] initWithUsername:@"Sabrish" andPassword:@"sab123456#"];
+    [loginRequest executeOnComplete : ^(Response* response) {
+        
+        NSLog(@"%@", response);
+        [_loadingAnimationView hide];
+        
+    } onError: ^(NSError* error){
+        NSLog(@"%@", error);
+        [_loadingAnimationView hide];
+    }];
+    
+   
+    [_loadingAnimationView showWithMessage:@"Loading" inView:self.view];
+
+}
 @end

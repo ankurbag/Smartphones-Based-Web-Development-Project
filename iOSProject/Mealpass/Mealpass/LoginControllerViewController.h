@@ -7,7 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "LoadingAnimationView.h"
 
 @interface LoginControllerViewController : UIViewController
+
+@property  LoadingAnimationView *loadingAnimationView;
+- (IBAction)signIn:(id)sender;
 
 @end

@@ -1,5 +1,5 @@
 //
-//  Request.m
+//  LoginRequestArgs.m
 //  Mealpass
 //
 //  Created by Sabrish Ramamoorthy on 12/13/16.

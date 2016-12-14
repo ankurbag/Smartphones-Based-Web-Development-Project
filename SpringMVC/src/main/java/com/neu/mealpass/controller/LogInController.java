@@ -1,9 +1,11 @@
 package com.neu.mealpass.controller;
 
 import java.io.IOException;
+import java.security.NoSuchAlgorithmException;
 import java.sql.Connection;
 import java.text.DateFormat;
 import java.util.Date;
+import java.util.List;
 import java.util.Locale;
 
 import javax.servlet.http.HttpServletRequest;
@@ -21,8 +23,13 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.google.gson.Gson;
 import com.neu.mealpass.dao.ConnectionDao;
+import com.neu.mealpass.dao.MealPassConnectionDao;
+import com.neu.mealpass.meal.MealPassOption;
 import com.neu.mealpass.request.PreferenceRequest;
+import com.neu.mealpass.request.Request;
 import com.neu.mealpass.request.SignupRequest;
+import com.neu.mealpass.response.Response;
+import com.neu.mealpass.response.StatusCode;
 import com.neu.mealpass.user.Account;
 import com.neu.mealpass.utils.MD5Hashing;
 
@@ -39,34 +46,61 @@ public class LogInController {
 	 */
 	@RequestMapping(value = "/login**", method = RequestMethod.POST)
 	public void loginUser(HttpServletRequest request,HttpServletResponse response, @RequestBody String loginRequest){
-		System.out.println("setPreference "+loginRequest);
-		if(loginRequest != null){
-			JSONObject jObject  = new JSONObject(loginRequest); // json
-			String userName = jObject.getString("userName");
-			String password = "";
+		System.out.println("loginUser "+loginRequest);
+		
+		Gson gson = new Gson();
+		StatusCode statusCode = StatusCode.STATUS_ERROR;
+		
+	    if(loginRequest !=  null){
+	    	Request responseRequest = gson.fromJson(loginRequest, Request.class);
+	    	if(responseRequest != null){
+	    		Account account = responseRequest.getAccount();
+				if(account != null){
+					try {
+						account.setPassword(MD5Hashing.getDecodedPassword(account.getPassword()));
+						Connection connection = ConnectionDao.getConnection();
+						Account account1 = ConnectionDao.loginUser(connection, account.getUserName(), account.getPassword());
+						if(account1!=null){
+							
+						Response response2 = new Response(); 
+						List<MealPassOption> mealPassOptions = MealPassConnectionDao.getMealPassOptions(connection);
+						response2.setMealPassOptions(mealPassOptions);
+						response2.setAccount(account1);
+						statusCode = StatusCode.STATUS_OK;
+						response2.setStatusCode(StatusCode.STATUS_OK);
+						String json = gson.toJson(response2);
+						System.out.println("loginUser Response : "+json);
+						response.addHeader("Content-type", "application/json");
+						response.setContentType("application/json");
+						response.getWriter().write(json);
+						
+						}
+							
+					} catch (NoSuchAlgorithmException e) {
+						e.printStackTrace();
+					} catch (IOException e){
+						e.printStackTrace();
+					}
+				}else{
+					statusCode = StatusCode.ACCOUNT_INVALID;
+				}
+	    	}
+	    }
+	    
+	    if(!Response.isStatusOk(statusCode)){
+			Response response2 = new Response(); 
+			response2.setStatusCode(statusCode);
+			response2.setStatusUserMessage("Error in getting meal pass options");
+			String json = gson.toJson(response2);
+			System.out.println("getMealPassOption Response : "+json);
 			try {
-				password = MD5Hashing.getDecodedPassword(jObject.getString("password"));
-			} catch (JSONException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} catch (Exception e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			
-			Connection connection = ConnectionDao.getConnection();
-			Account account = ConnectionDao.loginUser(connection, userName, password);
-			try {
-				if(account!=null)
-					response.getWriter().write("User Account with token: " + account.getToken());
-				else
-					response.getWriter().write("User Account not found");
+				response.addHeader("Content-type", "application/json");
+				response.setContentType("application/json");
+				response.getWriter().write(json);
 			} catch (IOException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}
-		
 		
 	}
 	
