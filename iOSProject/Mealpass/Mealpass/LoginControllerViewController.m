@@ -46,8 +46,8 @@
 }
 
 - (IBAction)signIn:(id)sender {
-    
-    [self onValidationSuccessful];
+    [self performSegueWithIdentifier:@"home" sender:self];
+    //[self onValidationSuccessful];
    
 }
 
