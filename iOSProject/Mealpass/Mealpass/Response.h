@@ -6,11 +6,14 @@
 //  Copyright © 2016 Sabrish Ramamoorthy. All rights reserved.
 //
 
-#import "Account.h"
 #import <JSONModel/JSONModel.h>
+#import "User.h"
 
 @interface Response : JSONModel
 
+@property (nonatomic) NSString *statusCode;
 @property (nonatomic) Account *account;
-
+@property (nonatomic) User<Optional> *user;
++ (id)sharedManager;
++(void) saveResponse : (Response *) response;
 @end

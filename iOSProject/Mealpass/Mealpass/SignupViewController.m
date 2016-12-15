@@ -1,22 +1,19 @@
 //
-//  LoginControllerViewController.m
+//  SignupViewController.m
 //  Mealpass
 //
-//  Created by Sabrish Ramamoorthy on 12/12/16.
+//  Created by Sabrish Ramamoorthy on 12/14/16.
 //  Copyright © 2016 Sabrish Ramamoorthy. All rights reserved.
 //
 
-#import "LoginControllerViewController.h"
-#import "BaseRequestArgs.h"
-#import "LoginRequest.h"
-#import "RequestStatus.h"
-
-
-@interface LoginControllerViewController ()
+#import "SignupViewController.h"
+#import "User.h"
+#import "SignupRequest.h"
+@interface SignupViewController ()
 
 @end
 
-@implementation LoginControllerViewController
+@implementation SignupViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -24,10 +21,14 @@
      _loadingAnimationView = [LoadingAnimationView new];
 }
 
-
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+-(BOOL) textFieldShouldReturn: (UITextField *) textField{
+    [textField resignFirstResponder];
+    return YES;
 }
 
 /*
@@ -40,24 +41,25 @@
 }
 */
 
--(BOOL) textFieldShouldReturn: (UITextField *) textField{
-    [textField resignFirstResponder];
-    return YES;
-}
-
-- (IBAction)signIn:(id)sender {
-    
+- (IBAction)onSignup:(id)sender {
     [self onValidationSuccessful];
-   
 }
 
--(void) onValidationSuccessful{
-    LoginRequest *loginRequest = [[LoginRequest alloc] initWithUsername:_usernameTextField.text andPassword:_passwordTextfield.text];
-    [loginRequest executeOnComplete : ^(Response* response) {
-        
+-(void) onValidationSuccessful {
+    
+    User *user = [[User alloc] init];
+    Account *account = [[Account alloc] init];
+    [account setUserName:_email.text];
+    [account setPassword:_password.text];
+    [user setName: [_fName.text stringByAppendingString:_lName.text]];
+    [user setEmailAddress:_email.text];
+    [user setAccount:account];
+    
+    SignupRequest *signupRequest = [[SignupRequest alloc] initWithUser:user];
+    
+    [signupRequest executeOnComplete : ^(Response* response) {
         [Response saveResponse:response];
         NSLog(@"%@", response);
-        NSLog(@"saved response %@", [Response sharedManager]);
         [_loadingAnimationView hide];
         
     } onError: ^(NSError* error){
@@ -67,6 +69,6 @@
     
     
     [_loadingAnimationView showWithMessage:@"Loading" inView:self.view];
-
+    
 }
 @end

@@ -31,6 +31,11 @@
 		D03D40911E0079FA0006261F /* BaseRequestArgs.m in Sources */ = {isa = PBXBuildFile; fileRef = D03D40901E0079FA0006261F /* BaseRequestArgs.m */; };
 		D03D409C1E00B29A0006261F /* LoadingAnimationView.m in Sources */ = {isa = PBXBuildFile; fileRef = D03D409A1E00B29A0006261F /* LoadingAnimationView.m */; };
 		D03D409D1E00B29A0006261F /* LoadingAnimationView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D03D409B1E00B29A0006261F /* LoadingAnimationView.xib */; };
+		D089B5C51E023DEE005DBEC1 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = D089B5C41E023DEE005DBEC1 /* User.m */; };
+		D089B5C81E023F99005DBEC1 /* SignupRequestArgs.m in Sources */ = {isa = PBXBuildFile; fileRef = D089B5C71E023F99005DBEC1 /* SignupRequestArgs.m */; };
+		D089B5CB1E0241C2005DBEC1 /* SignupRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = D089B5CA1E0241C2005DBEC1 /* SignupRequest.m */; };
+		D089B5CE1E0265EC005DBEC1 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D089B5CD1E0265EC005DBEC1 /* CoreData.framework */; };
+		D0B0A21F1E0219B6005B4D60 /* SignupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D0B0A21E1E0219B6005B4D60 /* SignupViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -95,6 +100,15 @@
 		D03D40991E00B29A0006261F /* LoadingAnimationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoadingAnimationView.h; sourceTree = "<group>"; };
 		D03D409A1E00B29A0006261F /* LoadingAnimationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoadingAnimationView.m; sourceTree = "<group>"; };
 		D03D409B1E00B29A0006261F /* LoadingAnimationView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoadingAnimationView.xib; sourceTree = "<group>"; };
+		D089B5C41E023DEE005DBEC1 /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
+		D089B5C61E023DFC005DBEC1 /* User.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
+		D089B5C71E023F99005DBEC1 /* SignupRequestArgs.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignupRequestArgs.m; sourceTree = "<group>"; };
+		D089B5C91E023FAD005DBEC1 /* SignupRequestArgs.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SignupRequestArgs.h; sourceTree = "<group>"; };
+		D089B5CA1E0241C2005DBEC1 /* SignupRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignupRequest.m; sourceTree = "<group>"; };
+		D089B5CC1E0241D6005DBEC1 /* SignupRequest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SignupRequest.h; sourceTree = "<group>"; };
+		D089B5CD1E0265EC005DBEC1 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		D0B0A21D1E0219B6005B4D60 /* SignupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignupViewController.h; sourceTree = "<group>"; };
+		D0B0A21E1E0219B6005B4D60 /* SignupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignupViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,6 +116,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D089B5CE1E0265EC005DBEC1 /* CoreData.framework in Frameworks */,
 				D018E18C1E0042E80086DF02 /* JSONModel.framework in Frameworks */,
 				D018E18E1E0042E80086DF02 /* AFNetworking.framework in Frameworks */,
 				D00400C01E019662000CA38E /* MagicalRecord.framework in Frameworks */,
@@ -181,6 +196,8 @@
 			children = (
 				D018E1831DFF65F80086DF02 /* LoginControllerViewController.h */,
 				D018E1841DFF65F80086DF02 /* LoginControllerViewController.m */,
+				D0B0A21D1E0219B6005B4D60 /* SignupViewController.h */,
+				D0B0A21E1E0219B6005B4D60 /* SignupViewController.m */,
 			);
 			name = controllers;
 			sourceTree = "<group>";
@@ -188,6 +205,7 @@
 		D018E1861DFFA82C0086DF02 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				D089B5CD1E0265EC005DBEC1 /* CoreData.framework */,
 				D018E1891E003C690086DF02 /* JSONModel.framework */,
 				D018E1871DFFA82D0086DF02 /* AFNetworking.framework */,
 			);
@@ -207,6 +225,10 @@
 				D00400B91E00D610000CA38E /* BaseRequest.m */,
 				D00400BB1E00D620000CA38E /* BaseRequest.h */,
 				D00400BC1E00DA08000CA38E /* RequestConstants.h */,
+				D089B5C71E023F99005DBEC1 /* SignupRequestArgs.m */,
+				D089B5C91E023FAD005DBEC1 /* SignupRequestArgs.h */,
+				D089B5CA1E0241C2005DBEC1 /* SignupRequest.m */,
+				D089B5CC1E0241D6005DBEC1 /* SignupRequest.h */,
 			);
 			name = request;
 			sourceTree = "<group>";
@@ -216,6 +238,8 @@
 			children = (
 				D018E1971E0073760086DF02 /* Account.h */,
 				D03D408E1E0079D50006261F /* Account.m */,
+				D089B5C41E023DEE005DBEC1 /* User.m */,
+				D089B5C61E023DFC005DBEC1 /* User.h */,
 			);
 			name = model;
 			sourceTree = "<group>";
@@ -353,14 +377,18 @@
 				D03D408F1E0079D50006261F /* Account.m in Sources */,
 				D03D40911E0079FA0006261F /* BaseRequestArgs.m in Sources */,
 				D018E1621DFF63870086DF02 /* AppDelegate.m in Sources */,
+				D089B5C51E023DEE005DBEC1 /* User.m in Sources */,
 				D03D409C1E00B29A0006261F /* LoadingAnimationView.m in Sources */,
 				D018E1851DFF65F80086DF02 /* LoginControllerViewController.m in Sources */,
 				D00400BA1E00D610000CA38E /* BaseRequest.m in Sources */,
 				D0287CB31E00C08A00884F2C /* LoginRequestArgs.m in Sources */,
+				D089B5C81E023F99005DBEC1 /* SignupRequestArgs.m in Sources */,
 				D018E15F1DFF63870086DF02 /* main.m in Sources */,
 				D018E1981E0073760086DF02 /* Account.h in Sources */,
 				D018E1931E005D5A0086DF02 /* LoginRequest.m in Sources */,
+				D0B0A21F1E0219B6005B4D60 /* SignupViewController.m in Sources */,
 				D018E1951E005E020086DF02 /* BaseRequestArgs.h in Sources */,
+				D089B5CB1E0241C2005DBEC1 /* SignupRequest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

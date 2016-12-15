@@ -11,6 +11,27 @@
 
 @implementation Response
 
++ (id)sharedManager {
+    static Response *response = nil;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        response = [[self alloc] init];
+    });
+    return response;
+}
 
++(void) saveResponse : (Response *) response{
+    
+    Response *actualResponse = [Response sharedManager];
+    
+    if(response.account){
+        [actualResponse setAccount:response.account];
+    }
+    
+    if(response.user){
+        [actualResponse setUser:response.user];
+    }
+    
+}
 
 @end

@@ -10,6 +10,8 @@
 #import "LoadingAnimationView.h"
 
 @interface LoginControllerViewController : UIViewController
+@property (weak, nonatomic) IBOutlet UITextField *usernameTextField;
+@property (weak, nonatomic) IBOutlet UITextField *passwordTextfield;
 
 @property  LoadingAnimationView *loadingAnimationView;
 - (IBAction)signIn:(id)sender;
