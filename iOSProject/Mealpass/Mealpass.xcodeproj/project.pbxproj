@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		D00400BA1E00D610000CA38E /* BaseRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = D00400B91E00D610000CA38E /* BaseRequest.m */; };
+		D00400C01E019662000CA38E /* MagicalRecord.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D00400BD1E019385000CA38E /* MagicalRecord.framework */; };
+		D00400C11E019662000CA38E /* MagicalRecord.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D00400BD1E019385000CA38E /* MagicalRecord.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		D018E15F1DFF63870086DF02 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D018E15E1DFF63870086DF02 /* main.m */; };
 		D018E1621DFF63870086DF02 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D018E1611DFF63870086DF02 /* AppDelegate.m */; };
 		D018E1651DFF63870086DF02 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D018E1641DFF63870086DF02 /* ViewController.m */; };
@@ -50,6 +52,7 @@
 			files = (
 				D018E18D1E0042E80086DF02 /* JSONModel.framework in Embed Frameworks */,
 				D018E18F1E0042E80086DF02 /* AFNetworking.framework in Embed Frameworks */,
+				D00400C11E019662000CA38E /* MagicalRecord.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -60,6 +63,7 @@
 		D00400B91E00D610000CA38E /* BaseRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseRequest.m; sourceTree = "<group>"; };
 		D00400BB1E00D620000CA38E /* BaseRequest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BaseRequest.h; sourceTree = "<group>"; };
 		D00400BC1E00DA08000CA38E /* RequestConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RequestConstants.h; sourceTree = "<group>"; };
+		D00400BD1E019385000CA38E /* MagicalRecord.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MagicalRecord.framework; path = Carthage/Build/iOS/MagicalRecord.framework; sourceTree = "<group>"; };
 		D018E15A1DFF63870086DF02 /* Mealpass.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Mealpass.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D018E15E1DFF63870086DF02 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		D018E1601DFF63870086DF02 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -100,6 +104,7 @@
 			files = (
 				D018E18C1E0042E80086DF02 /* JSONModel.framework in Frameworks */,
 				D018E18E1E0042E80086DF02 /* AFNetworking.framework in Frameworks */,
+				D00400C01E019662000CA38E /* MagicalRecord.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -116,6 +121,7 @@
 		D018E1511DFF63870086DF02 = {
 			isa = PBXGroup;
 			children = (
+				D00400BD1E019385000CA38E /* MagicalRecord.framework */,
 				D018E15C1DFF63870086DF02 /* Mealpass */,
 				D018E1761DFF63870086DF02 /* MealpassTests */,
 				D018E15B1DFF63870086DF02 /* Products */,
