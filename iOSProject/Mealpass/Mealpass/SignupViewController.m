@@ -19,6 +19,13 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
      _loadingAnimationView = [LoadingAnimationView new];
+    UIColor *color =  [UIColor colorWithRed:255.0f/255.0f
+                                      green:0.0f/255.0f
+                                       blue:0.0f/255.0f
+                                      alpha:0.9f];
+    self.navigationController.navigationBar.barTintColor = color;
+    [self.navigationController.navigationBar
+     setTitleTextAttributes:@{NSForegroundColorAttributeName : [UIColor whiteColor]}];
 }
 
 - (void)didReceiveMemoryWarning {
