@@ -7,7 +7,15 @@ public class Restaurant {
 	private int id;
 	private Address address;
 	private String restaurantName;
+	private String ratings;
 	
+	
+	public String getRatings() {
+		return ratings;
+	}
+	public void setRatings(String ratings) {
+		this.ratings = ratings;
+	}
 	public String getRestaurantName() {
 		return restaurantName;
 	}
