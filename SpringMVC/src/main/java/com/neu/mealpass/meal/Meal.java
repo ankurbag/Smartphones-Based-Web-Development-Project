@@ -13,7 +13,14 @@ public class Meal {
 	private MealTypeEnum mealTypeEnum;
 	private MealPortion mealPortion;
 	private List<IngredientsEnum> ingredients;
+	private String imagePath;
 	
+	public String getImagePath() {
+		return imagePath;
+	}
+	public void setImagePath(String imagePath) {
+		this.imagePath = imagePath;
+	}
 	public int getId() {
 		return id;
 	}

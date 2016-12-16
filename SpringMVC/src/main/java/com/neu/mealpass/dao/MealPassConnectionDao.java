@@ -301,15 +301,49 @@ public class MealPassConnectionDao {
 	 * @param userId
 	 * @return
 	 */
-	public static MealPass orderMeal(Connection conn, String mealId, int userId) {
+	public static MealPass orderMeal(Connection conn, RestaurantMeal restaurantMeal, String userName) {
 
 		// check remaining meal, enter into order table, subtract meal from
 		// restaurant meal count, and subtract user meal remaining
 
 		// populate mealPass and return
 		// MealPass mealPass = new MealPass();
+		
+		MealPass mealPass = null;
+		
+		if(restaurantMeal.getTotalMeals()>1){
+		
+		try {
+			String query = "UPDATE "+DbConstants.Tables.TABLE_RESTAURANTS_MEAL+" SET "+DbConstants.Columns.TOTAL_MEALS+" = ? WHERE +"+DbConstants.Columns.ID_RESTAURANTS +" = ?";
+			PreparedStatement pstmt = conn.prepareStatement(query);
+			pstmt.setInt(1, (restaurantMeal.getTotalMeals() - 1));
+			pstmt.setInt(2, restaurantMeal.getRestaurant().getId());
+			// execute update SQL statement for restaurant meal count
+			pstmt .executeUpdate();
+			
 
-		return null;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		mealPass = new MealPass();
+		try {
+			String queryUpdateUser = "UPDATE "+DbConstants.Tables.TABLE_MEALPASS+" SET "+DbConstants.Columns.MEAL_USED+" = ? WHERE +"+DbConstants.Columns.USER_NAME +" = ?";
+			PreparedStatement pstmtUpdateUser = conn.prepareStatement(queryUpdateUser);
+			pstmtUpdateUser.setInt(1, (mealPass.getMealUsed() + 1));
+			pstmtUpdateUser.setString(2, userName);
+			// execute update SQL statement for restaurant meal count
+			pstmtUpdateUser .executeUpdate();
+			
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		}
+		
+
+		return mealPass;
 	}
 	/**
 	 * 
@@ -324,7 +358,18 @@ public class MealPassConnectionDao {
 		// and increment user meal remaining
 
 		// populate mealPass and return
-		// MealPass mealPass = new MealPass();
+		 /*MealPass mealPass = new MealPass();
+		
+		try {
+		String deleteSQL = "DELETE DBUSER WHERE USER_ID = ?";
+		PreparedStatement preparedStatement = conn.prepareStatement(deleteSQL);
+		preparedStatement.setInt(1, 1001);
+		// execute delete SQL statement
+		preparedStatement.executeUpdate();
+		
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}*/
 
 		return null;
 	}
