@@ -84,6 +84,10 @@ public class DbConstants {
 
 		// MEALPASS
 		public static final String MEAL_USED  = "mealUsed";
+		public static final String PLAN_NAME  = "planName";
+		public static final String MEAL_CYCLE_END_DATE  = "mealCycleEndDate";
+		public static final String MEAL_CYCLE_START_DATE  = "mealCycleStartDate";
+		public static final String MEAL_TOTAL  = "mealTotal";
 		
 	}
 

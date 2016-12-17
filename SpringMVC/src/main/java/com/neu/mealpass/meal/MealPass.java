@@ -6,8 +6,8 @@ public class MealPass {
 
 	private int id;
 	private String planName;
-	private long startDate;
-	private long endDate;
+	private String startDate;
+	private String endDate;
 	private int mealTotal;
 	private int mealUsed;
 	private User user;
@@ -25,16 +25,18 @@ public class MealPass {
 	public void setPlanName(String planName) {
 		this.planName = planName;
 	}
-	public long getStartDate() {
+	
+	
+	public String getStartDate() {
 		return startDate;
 	}
-	public void setStartDate(long startDate) {
+	public void setStartDate(String startDate) {
 		this.startDate = startDate;
 	}
-	public long getEndDate() {
+	public String getEndDate() {
 		return endDate;
 	}
-	public void setEndDate(long endDate) {
+	public void setEndDate(String endDate) {
 		this.endDate = endDate;
 	}
 	public int getMealTotal() {

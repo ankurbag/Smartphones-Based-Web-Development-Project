@@ -419,6 +419,29 @@ public class MealPassConnectionDao {
 	public static MealPass getUserMealPass(Connection conn, String username){
 		MealPass mealPass = null; // return mealpass if exist else null
 		
+		String query = "SELECT * FROM "+DbConstants.Tables.TABLE_MEALPASS+" WHERE userName = ?";
+				
+				ResultSet rs = null;
+				try {
+				PreparedStatement pstmt = conn.prepareStatement(query);
+
+				pstmt.setString(1, username);
+				
+				rs = pstmt.executeQuery();
+				if (rs != null && rs.next()) {
+					mealPass = new MealPass();
+					mealPass.setPlanName(rs.getString(DbConstants.Columns.PLAN_NAME));
+					mealPass.setMealUsed(rs.getInt(Integer.parseInt(DbConstants.Columns.MEAL_USED)));
+					mealPass.setMealTotal(rs.getInt(DbConstants.Columns.MEAL_TOTAL));
+					mealPass.setStartDate(rs.getString(DbConstants.Columns.MEAL_CYCLE_START_DATE));
+					mealPass.setEndDate(rs.getString(DbConstants.Columns.MEAL_CYCLE_END_DATE));
+				}
+
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+		
 		return mealPass;
 	}
 	
