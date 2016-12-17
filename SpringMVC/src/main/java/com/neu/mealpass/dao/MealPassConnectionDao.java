@@ -177,7 +177,7 @@ public class MealPassConnectionDao {
 	 */
 	public static List<RestaurantMeal> getTodaysRestaurantMeal(Connection conn, int userId) {
 		
-		logger.info("getTodaysRestaurantMeal");
+		System.out.println("getTodaysRestaurantMeal");
 		List<RestaurantMeal> todaysRestaurantMeals = new ArrayList<RestaurantMeal>();
 		List<MealPassOption> mealPassOptions = getMealPassOptions(conn);
 		String query = "Select * from " + DbConstants.Tables.TABLE_RESTAURANTS_MEAL;
@@ -372,5 +372,17 @@ public class MealPassConnectionDao {
 		}*/
 
 		return null;
+	}
+	
+	public static MealPass getUserMealPass(Connection conn, String username){
+		MealPass mealPass = null; // return mealpass if exist else null
+		
+		return mealPass;
+	}
+	
+	public static RestaurantMeal getUserMeal(Connection connection, String username ){
+		RestaurantMeal restaurantMeal = null; // return restaurantMeal if exist else null
+		
+		return restaurantMeal;
 	}
 }

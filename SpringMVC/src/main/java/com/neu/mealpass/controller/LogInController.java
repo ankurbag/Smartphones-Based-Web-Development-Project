@@ -16,10 +16,14 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.google.gson.Gson;
 import com.neu.mealpass.dao.ConnectionDao;
+import com.neu.mealpass.dao.MealPassConnectionDao;
+import com.neu.mealpass.meal.MealPass;
+import com.neu.mealpass.meal.RestaurantMeal;
 import com.neu.mealpass.request.Request;
 import com.neu.mealpass.response.Response;
 import com.neu.mealpass.response.StatusCode;
 import com.neu.mealpass.user.Account;
+import com.neu.mealpass.user.User;
 import com.neu.mealpass.utils.MD5Hashing;
 
 /**
@@ -49,10 +53,21 @@ public class LogInController {
 						account.setPassword(MD5Hashing.getDecodedPassword(account.getPassword()));
 						Connection connection = ConnectionDao.getConnection();
 						Account account1 = ConnectionDao.loginUser(connection, account.getUserName(), account.getPassword());
+						User user = ConnectionDao.getUser(connection, account.getUserName());
+						MealPass mealPass = MealPassConnectionDao.getUserMealPass(connection, account.getUserName());
+						RestaurantMeal restaurantMeal = MealPassConnectionDao.getUserMeal(connection, account.getUserName());
+						boolean mealOrdered = false;
+						if(restaurantMeal !=null){
+							mealOrdered = true;
+						}
 						if(account1!=null){
 							
 						Response response2 = new Response(); 
 						response2.setAccount(account1);
+						response2.setUser(user);
+						response2.setMealPass(mealPass);
+						response2.setMealOrdered(mealOrdered);
+						response2.setUserRestaurantMeal(restaurantMeal);
 						statusCode = StatusCode.STATUS_OK;
 						response2.setStatusCode(StatusCode.STATUS_OK);
 						String json = gson.toJson(response2);

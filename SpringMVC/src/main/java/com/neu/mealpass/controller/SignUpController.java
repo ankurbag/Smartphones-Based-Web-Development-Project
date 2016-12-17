@@ -3,6 +3,7 @@ package com.neu.mealpass.controller;
 import java.io.IOException;
 import java.security.NoSuchAlgorithmException;
 import java.sql.Connection;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -16,6 +17,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.google.gson.Gson;
 import com.neu.mealpass.dao.ConnectionDao;
+import com.neu.mealpass.dao.MealPassConnectionDao;
+import com.neu.mealpass.meal.MealPassOption;
 import com.neu.mealpass.request.Request;
 import com.neu.mealpass.response.Response;
 import com.neu.mealpass.response.StatusCode;
@@ -52,9 +55,11 @@ public class SignUpController {
 						Connection connection = ConnectionDao.getConnection();
 						int row = ConnectionDao.createUserAccount(connection, account);
 						if(row > -1){
-							
+						List<MealPassOption> mealPassOptions = MealPassConnectionDao.getMealPassOptions(connection);
+								
 						Response response2 = new Response(); 		
 						response2.setAccount(account);
+						response2.setMealPassOptions(mealPassOptions);
 						statusCode = StatusCode.STATUS_OK;
 						response2.setStatusCode(StatusCode.STATUS_OK);
 						String json = gson.toJson(response2);
