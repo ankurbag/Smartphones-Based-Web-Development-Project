@@ -18,7 +18,7 @@ public class DbConstants {
 		public static final String TABLE_RESTAURANTS_INGREDIENTS = "mealpaldb.restaurants_ingredients";
 		public static final String TABLE_RESTAURANTS_MEAL = "mealpaldb.RestaurantsMeal";
 		public static final String TABLE_USER = "mealpaldb.user";
-		public static final String TABLE_MEALPASS = "mealpaldb.mealpass";
+		public static final String TABLE_MEALPASS = "mealpaldb.MealPass";
 	}
 
 	public class Columns {
@@ -76,6 +76,7 @@ public class DbConstants {
 		public static final String LAST_NAME = "last_name";
 		public static final String PHONE_NUM = "phone_num";
 		public static final String EMAIL_ADDRESS = "email_address";
+		public static final String USERTABLE_USERNAME = "username";
 		
 		// RESTAURANTSMEAL
 		public static final String USER_NAME = "userName";
