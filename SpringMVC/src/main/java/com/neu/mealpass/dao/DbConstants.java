@@ -76,6 +76,7 @@ public class DbConstants {
 		public static final String LAST_NAME = "last_name";
 		public static final String PHONE_NUM = "phone_num";
 		public static final String EMAIL_ADDRESS = "email_address";
+		public static final String USERTABLE_USERNAME = "username";
 		
 		// RESTAURANTSMEAL
 		public static final String USER_NAME = "userName";

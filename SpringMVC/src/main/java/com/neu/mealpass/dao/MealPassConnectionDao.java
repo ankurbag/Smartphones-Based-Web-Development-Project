@@ -18,6 +18,7 @@ import com.neu.mealpass.meal.MealPassOption;
 import com.neu.mealpass.meal.Restaurant;
 import com.neu.mealpass.meal.RestaurantMeal;
 import com.neu.mealpass.user.Address;
+import com.neu.mealpass.user.User;
 import com.neu.mealpass.user.preference.Ingredients;
 import com.neu.mealpass.user.preference.MealPortion;
 import com.neu.mealpass.user.preference.MealPreference;
@@ -340,7 +341,7 @@ public class MealPassConnectionDao {
 			e.printStackTrace();
 		}
 		
-		mealPass = new MealPass();
+		mealPass = getMealPass(conn, userName);
 		try {
 			String queryUpdateUser = "UPDATE "+DbConstants.Tables.TABLE_MEALPASS+" SET "+DbConstants.Columns.MEAL_USED+" = ? WHERE +"+DbConstants.Columns.USER_NAME +" = ?";
 			PreparedStatement pstmtUpdateUser = conn.prepareStatement(queryUpdateUser);
@@ -353,6 +354,8 @@ public class MealPassConnectionDao {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+		
+		mealPass = getMealPass(conn, userName);
 		
 		}
 		
@@ -394,26 +397,51 @@ public class MealPassConnectionDao {
 	 * @param userId
 	 * @return
 	 */
-	public static MealPass deleteMeal(Connection conn, String mealId, int userId) {
+	public static MealPass deleteMeal(Connection conn, String mealId, String userName) {
 
 		// delete from order table, increment meal from restaurant meal count,
-		// and increment user meal remaining
+		// and decrement user meal remaining
 
-		// populate mealPass and return
-		 /*MealPass mealPass = new MealPass();
+		// populate mealPass and return - userOrderMeal
+		 MealPass mealPass = null;
+		 RestaurantMeal restaurantMeal = new RestaurantMeal();
+		 Boolean booleanOrderMeal = userOrderMeal(conn, userName);
 		
-		try {
-		String deleteSQL = "DELETE DBUSER WHERE USER_ID = ?";
-		PreparedStatement preparedStatement = conn.prepareStatement(deleteSQL);
-		preparedStatement.setInt(1, 1001);
-		// execute delete SQL statement
-		preparedStatement.executeUpdate();
-		
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}*/
+		 if(booleanOrderMeal){
+			 // increment mealUsed in user table
+				try {
+					String query = "UPDATE "+DbConstants.Tables.TABLE_RESTAURANTS_MEAL+" SET "+DbConstants.Columns.USER_NAME+" = ? WHERE +"+DbConstants.Columns.ID_MEAL +" = ?";
+					PreparedStatement pstmt = conn.prepareStatement(query);
+					pstmt.setString(1, "");
+					pstmt.setInt(2,Integer.parseInt(mealId));
+					// execute update SQL statement for restaurant meal count
+					pstmt .executeUpdate();
+					
 
-		return null;
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+				
+				mealPass = getMealPass(conn, userName);
+				
+				try {
+					String queryUpdateUser = "UPDATE "+DbConstants.Tables.TABLE_MEALPASS+" SET "+DbConstants.Columns.MEAL_USED+" = ? WHERE +"+DbConstants.Columns.USER_NAME +" = ?";
+					PreparedStatement pstmtUpdateUser = conn.prepareStatement(queryUpdateUser);
+					pstmtUpdateUser.setString(1, String.valueOf(mealPass.getMealUsed() - 1));
+					pstmtUpdateUser.setString(2, userName);
+					// execute update SQL statement for restaurant meal count
+					pstmtUpdateUser .executeUpdate();
+					
+
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+				
+				mealPass = getMealPass(conn, userName);
+				
+				
+		 }
+		return mealPass;
 	}
 	
 	public static MealPass getUserMealPass(Connection conn, String username){
@@ -431,7 +459,7 @@ public class MealPassConnectionDao {
 				if (rs != null && rs.next()) {
 					mealPass = new MealPass();
 					mealPass.setPlanName(rs.getString(DbConstants.Columns.PLAN_NAME));
-					mealPass.setMealUsed(rs.getInt(Integer.parseInt(DbConstants.Columns.MEAL_USED)));
+					mealPass.setMealUsed(Integer.parseInt(rs.getString(DbConstants.Columns.MEAL_USED)));
 					mealPass.setMealTotal(rs.getInt(DbConstants.Columns.MEAL_TOTAL));
 					mealPass.setStartDate(rs.getString(DbConstants.Columns.MEAL_CYCLE_START_DATE));
 					mealPass.setEndDate(rs.getString(DbConstants.Columns.MEAL_CYCLE_END_DATE));
@@ -500,5 +528,108 @@ public class MealPassConnectionDao {
 		}
 		
 		return restaurantMeal;
+	}
+	
+	
+	public static MealPass getMealPass(Connection connection, String userName ){
+		MealPass mealPass = new MealPass();
+		User user = new User();
+		String query = "Select * from " + DbConstants.Tables.TABLE_MEALPASS + " where "+ DbConstants.Columns.USER_NAME +"="+userName;
+
+		ResultSet rs = null;
+		try {
+			PreparedStatement pstmt = connection.prepareStatement(query);
+			rs = pstmt.executeQuery();
+			if (rs != null) {
+				if (rs.next()) {
+					mealPass = new MealPass();
+					
+					mealPass.setPlanName(rs.getString(DbConstants.Columns.PLAN_NAME));
+					mealPass.setMealTotal(rs.getInt(DbConstants.Columns.MEAL_TOTAL));
+					mealPass.setMealUsed(Integer.parseInt(rs.getString(DbConstants.Columns.MEAL_USED)));
+					mealPass.setEndDate(rs.getString(DbConstants.Columns.MEAL_CYCLE_END_DATE));
+					mealPass.setStartDate(rs.getString(DbConstants.Columns.MEAL_CYCLE_START_DATE));
+					mealPass.setUser(user);
+					user.setUsername(rs.getString(DbConstants.Columns.USERTABLE_USERNAME));
+					
+				}
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return mealPass;
+	
+	}
+	
+	public static MealPass setMealPass(Connection connection, String userName, String planName, int mealTotal, String mealUsed, String endDate, String startDate  ){
+		MealPass mealPass = new MealPass();
+		
+		
+		try {
+			String insertTableSQL = "INSERT INTO "
+					+DbConstants.Tables.TABLE_MEALPASS 
+					+ " VALUES "
+					+ "(?,?,?,?,?,?)";
+			PreparedStatement preparedStatement = connection.prepareStatement(insertTableSQL);
+			preparedStatement.setString(1, userName);
+			preparedStatement.setString(2, planName);
+			preparedStatement.setInt(3, mealTotal );
+			preparedStatement.setString(4, mealUsed);
+			preparedStatement.setString(5, endDate);
+			preparedStatement.setString(6, startDate);
+			// execute insert SQL stetement
+			preparedStatement .executeUpdate();
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return mealPass;
+	
+	}
+	
+	
+	public static ArrayList<RestaurantMeal> getRestaurantMeal(Connection connection, String username ){
+		ArrayList<RestaurantMeal> restaurantMealList = new ArrayList<RestaurantMeal>();
+		
+			/*Database query is: 
+		select idRestaurants, a.idMeal, totalMeals, userName,orderDate from mealpaldb.Meal a inner join mealpaldb.RestaurantsMeal b 
+on a.idMeal = b.idMeal where userName = 'bagankur@gmail.com';*/
+		
+		
+		String query = "select idRestaurants, a.idMeal, totalMeals, userName,orderDate from mealpaldb.Meal a inner join mealpaldb.RestaurantsMeal b" 
++" on a.idMeal = b.idMeal where userName = ?";
+		
+		ResultSet rs = null;
+		try {
+		PreparedStatement pstmt = connection.prepareStatement(query);
+
+		pstmt.setString(1, username);
+		
+		rs = pstmt.executeQuery();
+		if (rs != null && rs.next()) {
+			RestaurantMeal restaurantMeal = new RestaurantMeal();
+			Restaurant restaurant = new Restaurant();
+			Meal meal = new Meal();
+			restaurantMeal.setTotalMeals(rs.getInt(DbConstants.Columns.TOTAL_MEALS));
+			restaurantMeal.setOrderDate(rs.getDate(DbConstants.Columns.ORDER_DATE));
+			restaurantMeal.setMeal(meal);
+			restaurantMeal.setRestaurant(restaurant);
+			
+			meal.setId(rs.getInt(rs.getInt(DbConstants.Columns.ID_MEAL)));
+			
+			restaurant.setId(rs.getInt(DbConstants.Columns.ID_RESTAURANTS));
+			restaurantMealList.add(restaurantMeal);
+			
+		}
+
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return restaurantMealList;
 	}
 }
