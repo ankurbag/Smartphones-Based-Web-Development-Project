@@ -51,6 +51,8 @@
 		D04F3AF81E04BE76002391C7 /* MealPass.m in Sources */ = {isa = PBXBuildFile; fileRef = D04F3AF71E04BE76002391C7 /* MealPass.m */; };
 		D04F3AFC1E04D70E002391C7 /* MealTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D04F3AFA1E04D70E002391C7 /* MealTableViewCell.m */; };
 		D04F3AFD1E04D70E002391C7 /* MealTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D04F3AFB1E04D70E002391C7 /* MealTableViewCell.xib */; };
+		D04F3AFF1E051EED002391C7 /* MealHistoryRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = D04F3AFE1E051EED002391C7 /* MealHistoryRequest.m */; };
+		D04F3B031E05358F002391C7 /* DeleteMealRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = D04F3B021E05358F002391C7 /* DeleteMealRequest.m */; };
 		D089B5C51E023DEE005DBEC1 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = D089B5C41E023DEE005DBEC1 /* User.m */; };
 		D089B5C81E023F99005DBEC1 /* SignupRequestArgs.m in Sources */ = {isa = PBXBuildFile; fileRef = D089B5C71E023F99005DBEC1 /* SignupRequestArgs.m */; };
 		D089B5CB1E0241C2005DBEC1 /* SignupRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = D089B5CA1E0241C2005DBEC1 /* SignupRequest.m */; };
@@ -158,6 +160,10 @@
 		D04F3AF91E04D70E002391C7 /* MealTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MealTableViewCell.h; sourceTree = "<group>"; };
 		D04F3AFA1E04D70E002391C7 /* MealTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MealTableViewCell.m; sourceTree = "<group>"; };
 		D04F3AFB1E04D70E002391C7 /* MealTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MealTableViewCell.xib; sourceTree = "<group>"; };
+		D04F3AFE1E051EED002391C7 /* MealHistoryRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MealHistoryRequest.m; sourceTree = "<group>"; };
+		D04F3B001E051EFE002391C7 /* MealHistoryRequest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MealHistoryRequest.h; sourceTree = "<group>"; };
+		D04F3B011E053580002391C7 /* DeleteMealRequest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DeleteMealRequest.h; sourceTree = "<group>"; };
+		D04F3B021E05358F002391C7 /* DeleteMealRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DeleteMealRequest.m; sourceTree = "<group>"; };
 		D089B5C41E023DEE005DBEC1 /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
 		D089B5C61E023DFC005DBEC1 /* User.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
 		D089B5C71E023F99005DBEC1 /* SignupRequestArgs.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignupRequestArgs.m; sourceTree = "<group>"; };
@@ -312,6 +318,10 @@
 				D089B5C91E023FAD005DBEC1 /* SignupRequestArgs.h */,
 				D089B5CA1E0241C2005DBEC1 /* SignupRequest.m */,
 				D089B5CC1E0241D6005DBEC1 /* SignupRequest.h */,
+				D04F3AFE1E051EED002391C7 /* MealHistoryRequest.m */,
+				D04F3B001E051EFE002391C7 /* MealHistoryRequest.h */,
+				D04F3B011E053580002391C7 /* DeleteMealRequest.h */,
+				D04F3B021E05358F002391C7 /* DeleteMealRequest.m */,
 			);
 			name = request;
 			sourceTree = "<group>";
@@ -475,6 +485,8 @@
 				D04F3ADC1E03BA48002391C7 /* OrderMealRequest.m in Sources */,
 				D04F3AF21E03BACD002391C7 /* MealDetailViewController.m in Sources */,
 				D018E1651DFF63870086DF02 /* ViewController.m in Sources */,
+				D04F3AFF1E051EED002391C7 /* MealHistoryRequest.m in Sources */,
+				D04F3B031E05358F002391C7 /* DeleteMealRequest.m in Sources */,
 				D04F3AE51E03BAAE002391C7 /* Meal.m in Sources */,
 				D04F3AF41E04BC29002391C7 /* MealPassOption.m in Sources */,
 				D03D408F1E0079D50006261F /* Account.m in Sources */,

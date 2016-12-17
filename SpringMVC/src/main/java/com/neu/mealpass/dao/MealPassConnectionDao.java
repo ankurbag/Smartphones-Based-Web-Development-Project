@@ -405,9 +405,9 @@ public class MealPassConnectionDao {
 		// populate mealPass and return - userOrderMeal
 		 MealPass mealPass = null;
 		 RestaurantMeal restaurantMeal = new RestaurantMeal();
-		 Boolean booleanOrderMeal = userOrderMeal(conn, userName);
+		 RestaurantMeal  booleanOrderMeal = getUserMeal(conn, userName);//userOrderMeal(conn, userName);
 		
-		 if(booleanOrderMeal){
+		 if(booleanOrderMeal != null){
 			 // increment mealUsed in user table
 				try {
 					String query = "UPDATE "+DbConstants.Tables.TABLE_RESTAURANTS_MEAL+" SET "+DbConstants.Columns.USER_NAME+" = ? WHERE +"+DbConstants.Columns.ID_MEAL +" = ?";
@@ -534,7 +534,7 @@ public class MealPassConnectionDao {
 	public static MealPass getMealPass(Connection connection, String userName ){
 		MealPass mealPass = new MealPass();
 		User user = new User();
-		String query = "Select * from " + DbConstants.Tables.TABLE_MEALPASS + " where "+ DbConstants.Columns.USER_NAME +"="+userName;
+		String query = "Select * from " + DbConstants.Tables.TABLE_MEALPASS + " where "+ DbConstants.Columns.USER_NAME +" = "+userName;
 
 		ResultSet rs = null;
 		try {
@@ -591,7 +591,7 @@ public class MealPassConnectionDao {
 	}
 	
 	
-	public static ArrayList<RestaurantMeal> getRestaurantMeal(Connection connection, String username ){
+	public static ArrayList<RestaurantMeal> getHistoryRestaurantMeal(Connection connection, String username ){
 		ArrayList<RestaurantMeal> restaurantMealList = new ArrayList<RestaurantMeal>();
 		
 			/*Database query is: 
@@ -599,28 +599,42 @@ public class MealPassConnectionDao {
 on a.idMeal = b.idMeal where userName = 'bagankur@gmail.com';*/
 		
 		
-		String query = "select idRestaurants, a.idMeal, totalMeals, userName,orderDate from mealpaldb.Meal a inner join mealpaldb.RestaurantsMeal b" 
-+" on a.idMeal = b.idMeal where userName = ?";
+		String query = "select * from mealpaldb.Meal a inner join mealpaldb.RestaurantsMeal b "+
+		"on a.idMeal = b.idMeal inner join mealpaldb.Restaurants c on "+
+		"b.idRestaurants = c.idRestaurants where userName = ?";
 		
 		ResultSet rs = null;
 		try {
 		PreparedStatement pstmt = connection.prepareStatement(query);
 
 		pstmt.setString(1, username);
-		
 		rs = pstmt.executeQuery();
-		if (rs != null && rs.next()) {
+		while (rs != null && rs.next()) {
 			RestaurantMeal restaurantMeal = new RestaurantMeal();
-			Restaurant restaurant = new Restaurant();
 			Meal meal = new Meal();
-			restaurantMeal.setTotalMeals(rs.getInt(DbConstants.Columns.TOTAL_MEALS));
-			restaurantMeal.setOrderDate(rs.getDate(DbConstants.Columns.ORDER_DATE));
+			Restaurant restaurant = new Restaurant();
+			Address address = new Address();
 			restaurantMeal.setMeal(meal);
 			restaurantMeal.setRestaurant(restaurant);
 			
-			meal.setId(rs.getInt(rs.getInt(DbConstants.Columns.ID_MEAL)));
+			meal.setId(rs.getInt(1));
+			meal.setMealName(rs.getString(2));
+			meal.setMealTypeEnum(MealTypeEnum.valueOf(rs.getString(3)));
+			meal.setMealPortion(MealPortion.valueOf(rs.getString(4)));
 			
-			restaurant.setId(rs.getInt(DbConstants.Columns.ID_RESTAURANTS));
+			restaurant.setId(rs.getInt(5));
+			restaurant.setAddress(address);
+			
+			address.setAddress1(rs.getString(12));
+			address.setCity(rs.getString(14));
+			address.setCountry(rs.getString(17));
+			address.setLattitude(Double.parseDouble(rs.getString(19)));
+			address.setLongitude(Double.parseDouble(rs.getString(20)));
+			address.setState(rs.getString(15));
+			address.setZipCode(rs.getString(16));
+			
+			restaurant.setRatings(rs.getString(18));
+			restaurant.setRestaurantName(rs.getString(11));
 			restaurantMealList.add(restaurantMeal);
 			
 		}

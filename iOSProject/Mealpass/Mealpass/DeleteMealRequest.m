@@ -1,16 +1,17 @@
 //
-//  OrderMealRequest.m
+//  DeleteMealRequest.m
 //  Mealpass
 //
-//  Created by Sabrish Ramamoorthy on 12/15/16.
+//  Created by Sabrish Ramamoorthy on 12/17/16.
 //  Copyright © 2016 Sabrish Ramamoorthy. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
+#import "DeleteMealRequest.h"
 #import "OrderMealRequest.h"
 #import "OrderMealRequestArgs.h"
 
-@implementation OrderMealRequest
+@implementation DeleteMealRequest
 
 -(id) initWithRestaurantMeal : (RestaurantMeal*) a_restaurantMeal{
     
@@ -35,6 +36,7 @@
     
     [self executeWithRequestUrl:@"deleteMeal" withParameters:parameters];
 }
+
 
 
 @end

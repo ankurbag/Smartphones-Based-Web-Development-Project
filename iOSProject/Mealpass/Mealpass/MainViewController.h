@@ -15,5 +15,11 @@
 @property  LoadingAnimationView *loadingAnimationView;
 @property (weak, nonatomic) IBOutlet UITableView *mealTableVIew;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *sidebarButton;
+@property (weak, nonatomic) IBOutlet UIView *orderedMealView;
 @property NSArray<RestaurantMeal*> *restaurantMeals;
+- (IBAction)deleteMeal:(id)sender;
+@property (weak, nonatomic) IBOutlet UILabel *mealNameLabel;
+@property (weak, nonatomic) IBOutlet UILabel *restaurantNameLabel;
+@property (weak, nonatomic) IBOutlet UILabel *addressLabel;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *orderMealViewHeight;
 @end

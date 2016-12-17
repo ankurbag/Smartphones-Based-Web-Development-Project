@@ -23,6 +23,7 @@
 @property (nonatomic) NSArray<MealPassOption *><Optional> *mealPassOptions;
 @property (nonatomic) MealPass<Optional> *mealPass;
 @property (nonatomic) RestaurantMeal <Optional> *userRestaurantMeal;
+@property (nonatomic) NSArray<RestaurantMeal*><Optional> *historyRestaurantMeal;
 
 + (id)sharedManager;
 +(void) saveResponse : (Response *) response;

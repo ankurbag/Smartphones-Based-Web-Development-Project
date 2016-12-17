@@ -9,6 +9,7 @@
 #import "MealTableViewCell.h"
 #import "GetMealsRequest.h"
 #import "MealDetailViewController.h"
+#import "DeleteMealRequest.h"
 
 @interface MainViewController ()
 
@@ -35,6 +36,7 @@
         [self.view addGestureRecognizer:self.revealViewController.panGestureRecognizer];
     }
      _loadingAnimationView = [LoadingAnimationView new];
+     [self.view addConstraint:[NSLayoutConstraint constraintWithItem:self.orderedMealView attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1.0 constant:0]];
     [self getMeals];
 }
 
@@ -52,6 +54,7 @@
                   if(_restaurantMeals){
                       [_mealTableVIew reloadData];
                   }
+                  [self checkMealBought];
               }else{
                   [self showError:response.statusUserMessage];
               }
@@ -68,6 +71,35 @@
     
     
     [_loadingAnimationView showWithMessage:@"Loading" inView:self.view];
+    
+}
+
+-(void)checkMealBought {
+    Response *response = [Response sharedManager];
+    if(response){
+        if(response.mealOrdered){
+            _orderedMealView.hidden = NO;
+           [self.view addConstraint:[NSLayoutConstraint constraintWithItem:self.orderedMealView attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1.0 constant:123]];
+            RestaurantMeal * restaurantMeal = [response userRestaurantMeal];
+            Meal *meal = [restaurantMeal meal];
+            
+            if(meal){
+                _mealNameLabel.text = meal.mealName;
+                
+            }
+            
+            Restaurant *restaurant = [restaurantMeal restaurant];
+            if(restaurant){
+                _restaurantNameLabel.text = restaurant.restaurantName;
+            }
+
+            
+        }else{
+            _orderedMealView.hidden = YES;
+            [self.view addConstraint:[NSLayoutConstraint constraintWithItem:self.orderedMealView attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1.0 constant:0]];
+        }
+    }
+    
     
 }
 
@@ -161,4 +193,33 @@
 
 
 
+- (IBAction)deleteMeal:(id)sender {
+    
+    Response *response = [Response sharedManager];
+    if(response){
+        if(response.mealOrdered){
+
+    DeleteMealRequest *deleteMealRequest = [[DeleteMealRequest alloc] initWithRestaurantMeal:[response userRestaurantMeal]];
+    
+    [deleteMealRequest executeOnComplete : ^(Response* response) {
+            NSLog(@"%@", response);
+            [_loadingAnimationView hide];
+            if([Response isStatusOk:[response statusCode]]){
+               // [Response saveResponse:response];
+                [self getMeals];
+            }else{
+                [self showError:response.statusUserMessage];
+            }
+        
+        } onError: ^(NSError* error){
+            NSLog(@"%@", error);
+            [_loadingAnimationView hide];
+            [self showError:@"Error while deleting meal ! Please try again"];
+        }];
+    
+    
+        [_loadingAnimationView showWithMessage:@"Loading" inView:self.view];
+      }
+    }
+}
 @end

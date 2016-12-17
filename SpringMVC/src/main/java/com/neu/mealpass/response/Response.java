@@ -18,6 +18,7 @@ public class Response {
 	private HashMap<String, String> opaqueData;
 	private List<MealPassOption> mealPassOptions;
 	private List<RestaurantMeal> restaurantMeal;
+	private List<RestaurantMeal> historyRestaurantMeal;
 	private MealPass mealPass;
 	private RestaurantMeal userRestaurantMeal;
 	private boolean mealOrdered;
@@ -107,6 +108,14 @@ public class Response {
 
 	public void setUser(User user) {
 		this.user = user;
+	}
+
+	public List<RestaurantMeal> getHistoryRestaurantMeal() {
+		return historyRestaurantMeal;
+	}
+
+	public void setHistoryRestaurantMeal(List<RestaurantMeal> historyRestaurantMeal) {
+		this.historyRestaurantMeal = historyRestaurantMeal;
 	}
 	
 }

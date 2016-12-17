@@ -52,6 +52,10 @@
         [actualResponse setUserRestaurantMeal:response.userRestaurantMeal];
     }
     
+    if(response.historyRestaurantMeal){
+        [actualResponse setHistoryRestaurantMeal:response.historyRestaurantMeal];
+    }
+    
    }
 
 +(BOOL) isStatusOk : (NSString*)statusCode{

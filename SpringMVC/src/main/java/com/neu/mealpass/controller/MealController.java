@@ -114,7 +114,7 @@ public class MealController {
 					if(user != null){
 						
 						RestaurantMeal restaurantMeal = responseRequest.getRestaurantMeal();
-						MealPass mealPass = MealPassConnectionDao.orderMeal(connection, restaurantMeal, user.getUsername());
+						MealPass mealPass = MealPassConnectionDao.orderMeal(connection, restaurantMeal, account.getUserName());
 						if(mealPass.isActive()){
 							Response response2 = new Response(); 
 							response2.setAccount(account);
@@ -173,7 +173,7 @@ public class MealController {
 					if(user != null){
 						
 						RestaurantMeal restaurantMeal = responseRequest.getRestaurantMeal();
-						MealPass mealPass = MealPassConnectionDao.deleteMeal(connection, ""+restaurantMeal.getMeal().getId(), user.getId());
+						MealPass mealPass = MealPassConnectionDao.deleteMeal(connection, ""+restaurantMeal.getMeal().getId(), account.getUserName());
 						if(mealPass.isActive()){
 							Response response2 = new Response(); 
 							response2.setAccount(account);
@@ -211,6 +211,74 @@ public class MealController {
 			}
 		}
 		
+	}
+	
+	@RequestMapping(value = "/mealHistory**", method = RequestMethod.POST)
+	public void getmealHistory(HttpServletRequest request,HttpServletResponse response, @RequestBody String requestBody){
+		System.out.println(TAG+" getmealHistory "+requestBody);
+		StatusCode statusCode = StatusCode.STATUS_ERROR;
+		Gson gson = new Gson();
+		if(requestBody != null){
+			Request responseRequest = gson.fromJson(requestBody, Request.class);
+			Account account = responseRequest.getAccount();
+			Connection connection = ConnectionDao.getConnection();
+			User user = ConnectionDao.getUser(connection, account.getUserName());
+			MealPass mealPass = MealPassConnectionDao.getUserMealPass(connection, account.getUserName());
+			List<MealPassOption> mealPassOptions = null;
+			if(mealPass == null){
+				mealPassOptions = MealPassConnectionDao.getMealPassOptions(connection);
+			}
+			RestaurantMeal restaurantMeal = MealPassConnectionDao.getUserMeal(connection, account.getUserName());
+			boolean mealOrdered = false;
+			if(restaurantMeal !=null){
+				mealOrdered = true;
+			}
+			if(account != null){
+				if(ConnectionDao.isAccountValid(connection, account)){
+					if(user != null){
+						List<RestaurantMeal> restaurantMeals = MealPassConnectionDao.getHistoryRestaurantMeal(connection, account.getUserName());
+						Response response2 = new Response(); 
+						response2.setRestaurantMeal(restaurantMeals);
+						response2.setAccount(account);
+						response2.setUser(user);
+						response2.setMealPass(mealPass);
+						response2.setMealOrdered(mealOrdered);
+						response2.setMealPassOptions(mealPassOptions);
+						response2.setUserRestaurantMeal(restaurantMeal);
+						statusCode = StatusCode.STATUS_OK;
+						response2.setStatusCode(StatusCode.STATUS_OK);
+						String json = gson.toJson(response2);
+						System.out.println("getAllMeals Response : "+json);
+						try {
+							response.addHeader("Content-type", "application/json");
+							response.setContentType("application/json");
+							response.getWriter().write(json);
+						} catch (IOException e) {
+							e.printStackTrace();
+						}
+					}
+					
+					
+				}else{
+					statusCode = StatusCode.ACCOUNT_INVALID;
+				}
+			}
+		}
+		
+		if(!Response.isStatusOk(statusCode)){
+			Response response2 = new Response(); 
+			response2.setStatusCode(statusCode);
+			response2.setStatusUserMessage("Error in getting meals");
+			String json = gson.toJson(response2);
+			System.out.println("getAllMeals Response : "+json);
+			try {
+				response.addHeader("Content-type", "application/json");
+				response.setContentType("application/json");
+				response.getWriter().write(json);
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
 	}
 	
 }
