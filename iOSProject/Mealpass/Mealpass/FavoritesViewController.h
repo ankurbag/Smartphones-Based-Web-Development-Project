@@ -1,5 +1,5 @@
 //
-//  MapViewController.h
+//  PhotoViewController.h
 //  SidebarDemo
 //
 //  Created by Simon Ng on 10/11/14.
@@ -8,7 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface MapViewController : UIViewController
+@interface FavoritesViewController : UIViewController
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *sidebarButton;
-
+@property (weak, nonatomic) IBOutlet UIImageView *photoImageView;
+@property (strong, nonatomic) NSString *photoFilename;
 @end

@@ -1,10 +1,12 @@
 package com.neu.mealpass.user;
 
+import com.neu.mealpass.meal.MealPass;
 import com.neu.mealpass.user.preference.UserPreference;
 
 public class User {
 	
 	private int id;
+	private String username;
 	private String name;
 	private String phoneNum;
 	private String emailAddress;
@@ -53,6 +55,12 @@ public class User {
 	}
 	public void setAccount(Account account) {
 		this.account = account;
+	}
+	public String getUsername() {
+		return username;
+	}
+	public void setUsername(String username) {
+		this.username = username;
 	}
 	
 }

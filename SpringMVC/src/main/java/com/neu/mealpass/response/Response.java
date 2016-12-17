@@ -7,16 +7,20 @@ import com.neu.mealpass.meal.MealPass;
 import com.neu.mealpass.meal.MealPassOption;
 import com.neu.mealpass.meal.RestaurantMeal;
 import com.neu.mealpass.user.Account;
+import com.neu.mealpass.user.User;
 
 public class Response {
 
 	private StatusCode statusCode;
 	private String statusUserMessage;
 	private Account account;
+	private User user;
 	private HashMap<String, String> opaqueData;
 	private List<MealPassOption> mealPassOptions;
 	private List<RestaurantMeal> restaurantMeal;
 	private MealPass mealPass;
+	private RestaurantMeal userRestaurantMeal;
+	private boolean mealOrdered;
 	
 	public StatusCode getStatusCode() {
 		return statusCode;
@@ -79,6 +83,30 @@ public class Response {
 
 	public void setMealPass(MealPass mealPass) {
 		this.mealPass = mealPass;
+	}
+
+	public RestaurantMeal getUserRestaurantMeal() {
+		return userRestaurantMeal;
+	}
+
+	public void setUserRestaurantMeal(RestaurantMeal userRestaurantMeal) {
+		this.userRestaurantMeal = userRestaurantMeal;
+	}
+
+	public boolean isMealOrdered() {
+		return mealOrdered;
+	}
+
+	public void setMealOrdered(boolean mealOrdered) {
+		this.mealOrdered = mealOrdered;
+	}
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
 	}
 	
 }

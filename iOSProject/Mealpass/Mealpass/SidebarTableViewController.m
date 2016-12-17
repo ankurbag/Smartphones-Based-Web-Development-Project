@@ -8,7 +8,7 @@
 
 #import "SidebarTableViewController.h"
 #import "SWRevealViewController.h"
-#import "PhotoViewController.h"
+#import "InviteViewController.h"
 
 @interface SidebarTableViewController ()
 
@@ -21,7 +21,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    menuItems = @[@"title", @"news", @"comments", @"map", @"calendar"];
+    menuItems = @[@"title", @"browse", @"invite", @"history", @"favorites",@"myprofile"];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -63,7 +63,7 @@
     // Set the photo if it navigates to the PhotoView
     if ([segue.identifier isEqualToString:@"showPhoto"]) {
         UINavigationController *navController = segue.destinationViewController;
-        PhotoViewController *photoController = [navController childViewControllers].firstObject;
+        InviteViewController *photoController = [navController childViewControllers].firstObject;
         NSString *photoFilename = [NSString stringWithFormat:@"%@_photo", [menuItems objectAtIndex:indexPath.row]];
         photoController.photoFilename = photoFilename;
     }

@@ -1,23 +1,25 @@
 //
-//  MapViewController.m
+//  PhotoViewController.m
 //  SidebarDemo
 //
 //  Created by Simon Ng on 10/11/14.
 //  Copyright (c) 2014 AppCoda. All rights reserved.
 //
 
-#import "MapViewController.h"
+#import "MyProfileViewController.h"
 #import "SWRevealViewController.h"
 
-@interface MapViewController ()
+@interface MyProfileViewController ()
 
 @end
 
-@implementation MapViewController
+@implementation MyProfileViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.title = @"History";
+    self.title = @"My profile";
+    self.photoImageView.image = [UIImage imageNamed:self.photoFilename];
+
     SWRevealViewController *revealViewController = self.revealViewController;
     if ( revealViewController )
     {

@@ -1,15 +1,17 @@
 package com.neu.mealpass.request;
 
+import com.neu.mealpass.meal.RestaurantMeal;
+
 public class MealRequest extends Request{
 
-	private String mealId;
+	private RestaurantMeal restaurantMeal;
 
-	public String getMealId() {
-		return mealId;
+	public RestaurantMeal getRestaurantMeal() {
+		return restaurantMeal;
 	}
 
-	public void setMealId(String mealId) {
-		this.mealId = mealId;
+	public void setRestaurantMeal(RestaurantMeal restaurantMeal) {
+		this.restaurantMeal = restaurantMeal;
 	}
 
 }

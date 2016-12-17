@@ -6,18 +6,18 @@
 //  Copyright (c) 2014 AppCoda. All rights reserved.
 //
 
-#import "PhotoViewController.h"
+#import "FavoritesViewController.h"
 #import "SWRevealViewController.h"
 
-@interface PhotoViewController ()
+@interface FavoritesViewController ()
 
 @end
 
-@implementation PhotoViewController
+@implementation FavoritesViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.title = @"My profile";
+    self.title = @"Favorites";
     self.photoImageView.image = [UIImage imageNamed:self.photoFilename];
 
     SWRevealViewController *revealViewController = self.revealViewController;

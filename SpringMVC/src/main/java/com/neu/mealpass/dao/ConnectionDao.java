@@ -6,6 +6,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import com.neu.mealpass.user.Account;
+import com.neu.mealpass.user.User;
 
 public class ConnectionDao {
 
@@ -97,6 +98,15 @@ public class ConnectionDao {
 			e.printStackTrace();
 		}
 		return true;
+	}
+	
+	public static User getUser(Connection conn, String username){
+		
+		User user = new User();
+		String query = "SELECT * from mealpaldb.account where username=? and password=?";
+		ResultSet rs = null;
+		
+		return user;
 	}
 
 	public static Account loginUser(Connection conn, String username, String password) {
