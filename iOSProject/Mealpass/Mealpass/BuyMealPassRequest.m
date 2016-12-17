@@ -33,7 +33,7 @@
     
     NSDictionary *parameters = [orderMealRequestArgs toDictionary];
     
-    [self executeWithRequestUrl:@"deleteMeal" withParameters:parameters];
+    [self executeWithRequestUrl:@"buyMealPass" withParameters:parameters];
 }
 
 

@@ -10,7 +10,7 @@
 #import "GetMealsRequest.h"
 #import "MealDetailViewController.h"
 #import "DeleteMealRequest.h"
-
+#define RAND_FROM_TO(min, max) (min + arc4random_uniform(max - min + 1))
 @interface MainViewController ()
 
 @end
@@ -119,7 +119,9 @@
     
     return 0;
 }
-
+- (NSInteger)randomValueBetween:(NSInteger)min and:(NSInteger)max {
+    return (NSInteger)(min + arc4random_uniform(max - min + 1));
+}
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -145,6 +147,9 @@
         if(meal){
              cell.mealLabel.text = [meal mealName];
         }
+        NSInteger myInteger = RAND_FROM_TO(1,17);
+        NSString* yString = [NSString stringWithFormat:@"appetite-slider-%ld.jpg",(long)myInteger];
+        cell.imageView.image = [UIImage imageNamed:yString];
     }
     
     return cell;

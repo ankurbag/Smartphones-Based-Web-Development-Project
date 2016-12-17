@@ -8,6 +8,6 @@
 
 @interface RequestContants : NSObject
 
-#define baseURL @"http://localhost:8080/mealpass/"
+#define baseURL @"http://meal-pass.ayjvpmd3iw.us-west-2.elasticbeanstalk.com/"
 
 @end

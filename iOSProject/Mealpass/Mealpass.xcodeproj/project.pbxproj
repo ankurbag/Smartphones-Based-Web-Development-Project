@@ -13,6 +13,8 @@
 		960071451E0274EC00A3AC96 /* SidebarTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9600713F1E0274EC00A3AC96 /* SidebarTableViewController.m */; };
 		960071461E0274EC00A3AC96 /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 960071411E0274EC00A3AC96 /* SWRevealViewController.m */; };
 		960071491E02750D00A3AC96 /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 960071471E02750D00A3AC96 /* Home.storyboard */; };
+		9653C43C1E05618C00BB6519 /* main-icon-2.png in Resources */ = {isa = PBXBuildFile; fileRef = 9653C43B1E05618C00BB6519 /* main-icon-2.png */; };
+		9653C43E1E05737D00BB6519 /* BuyMealPassViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9653C43D1E05737D00BB6519 /* BuyMealPassViewController.m */; };
 		9678BE641E03A04100ED2E7F /* FavoritesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9678BE611E03A04100ED2E7F /* FavoritesViewController.m */; };
 		9678BE651E03A04100ED2E7F /* MyProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9678BE631E03A04100ED2E7F /* MyProfileViewController.m */; };
 		D00400BA1E00D610000CA38E /* BaseRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = D00400B91E00D610000CA38E /* BaseRequest.m */; };
@@ -100,6 +102,9 @@
 		960071401E0274EC00A3AC96 /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
 		960071411E0274EC00A3AC96 /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
 		960071481E02750D00A3AC96 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Home.storyboard; sourceTree = "<group>"; };
+		9653C43B1E05618C00BB6519 /* main-icon-2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "main-icon-2.png"; path = "Assets.xcassets/main-icon-2.png"; sourceTree = "<group>"; };
+		9653C43D1E05737D00BB6519 /* BuyMealPassViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BuyMealPassViewController.m; sourceTree = "<group>"; };
+		9653C43F1E05738F00BB6519 /* BuyMealPassViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BuyMealPassViewController.h; sourceTree = "<group>"; };
 		9678BE601E03A04100ED2E7F /* FavoritesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FavoritesViewController.h; sourceTree = "<group>"; };
 		9678BE611E03A04100ED2E7F /* FavoritesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FavoritesViewController.m; sourceTree = "<group>"; };
 		9678BE621E03A04100ED2E7F /* MyProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyProfileViewController.h; sourceTree = "<group>"; };
@@ -238,6 +243,7 @@
 				D018E1661DFF63870086DF02 /* Main.storyboard */,
 				960071471E02750D00A3AC96 /* Home.storyboard */,
 				D018E1691DFF63870086DF02 /* Assets.xcassets */,
+				9653C43B1E05618C00BB6519 /* main-icon-2.png */,
 				D018E16B1DFF63870086DF02 /* LaunchScreen.storyboard */,
 				D018E16E1DFF63870086DF02 /* Info.plist */,
 				D018E15D1DFF63870086DF02 /* Supporting Files */,
@@ -286,7 +292,9 @@
 				D018E1831DFF65F80086DF02 /* LoginControllerViewController.h */,
 				D018E1841DFF65F80086DF02 /* LoginControllerViewController.m */,
 				D0B0A21D1E0219B6005B4D60 /* SignupViewController.h */,
+				9653C43F1E05738F00BB6519 /* BuyMealPassViewController.h */,
 				D0B0A21E1E0219B6005B4D60 /* SignupViewController.m */,
+				9653C43D1E05737D00BB6519 /* BuyMealPassViewController.m */,
 			);
 			name = controllers;
 			sourceTree = "<group>";
@@ -471,6 +479,7 @@
 				960071491E02750D00A3AC96 /* Home.storyboard in Resources */,
 				D04F3AFD1E04D70E002391C7 /* MealTableViewCell.xib in Resources */,
 				D018E16A1DFF63870086DF02 /* Assets.xcassets in Resources */,
+				9653C43C1E05618C00BB6519 /* main-icon-2.png in Resources */,
 				D03D409D1E00B29A0006261F /* LoadingAnimationView.xib in Resources */,
 				D018E1681DFF63870086DF02 /* Main.storyboard in Resources */,
 			);
@@ -493,6 +502,7 @@
 				9678BE641E03A04100ED2E7F /* FavoritesViewController.m in Sources */,
 				D0287CB91E00C85900884F2C /* Response.m in Sources */,
 				D04F3B061E054860002391C7 /* MealOptionArgs.m in Sources */,
+				9653C43E1E05737D00BB6519 /* BuyMealPassViewController.m in Sources */,
 				D04F3ADC1E03BA48002391C7 /* OrderMealRequest.m in Sources */,
 				D04F3AF21E03BACD002391C7 /* MealDetailViewController.m in Sources */,
 				D018E1651DFF63870086DF02 /* ViewController.m in Sources */,
