@@ -36,7 +36,8 @@
         [self.view addGestureRecognizer:self.revealViewController.panGestureRecognizer];
     }
      _loadingAnimationView = [LoadingAnimationView new];
-     [self.view addConstraint:[NSLayoutConstraint constraintWithItem:self.orderedMealView attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1.0 constant:0]];
+     //[self.view addConstraint:[NSLayoutConstraint constraintWithItem:self.orderedMealView attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1.0 constant:0]];
+    self.orderMealViewHeight = 0;
     [self getMeals];
 }
 
@@ -205,7 +206,11 @@
             NSLog(@"%@", response);
             [_loadingAnimationView hide];
             if([Response isStatusOk:[response statusCode]]){
-               // [Response saveResponse:response];
+                Response *res = [Response sharedManager];
+                [res setUserRestaurantMeal:nil];
+                [res setMealOrdered:NO];
+                
+               [Response saveResponse:response];
                 [self getMeals];
             }else{
                 [self showError:response.statusUserMessage];
