@@ -1,11 +1,23 @@
 package com.neu.mealpass.meal;
 
+import java.sql.Date;
+
 public class RestaurantMeal {
 
 	private Restaurant restaurant;
 	private Meal meal;
 	private int totalMeals;
+	private Date orderDate;
 	
+	
+	
+	
+	public Date getOrderDate() {
+		return orderDate;
+	}
+	public void setOrderDate(Date orderDate) {
+		this.orderDate = orderDate;
+	}
 	public int getTotalMeals() {
 		return totalMeals;
 	}

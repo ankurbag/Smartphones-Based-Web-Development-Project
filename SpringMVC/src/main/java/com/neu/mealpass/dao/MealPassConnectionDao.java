@@ -314,10 +314,11 @@ public class MealPassConnectionDao {
 		if(restaurantMeal.getTotalMeals()>1){
 		
 		try {
-			String query = "UPDATE "+DbConstants.Tables.TABLE_RESTAURANTS_MEAL+" SET "+DbConstants.Columns.TOTAL_MEALS+" = ? WHERE +"+DbConstants.Columns.ID_RESTAURANTS +" = ?";
+			String query = "UPDATE "+DbConstants.Tables.TABLE_RESTAURANTS_MEAL+" SET "+DbConstants.Columns.TOTAL_MEALS+" = ?, "+DbConstants.Columns.ORDER_DATE +" = ? WHERE +"+DbConstants.Columns.ID_RESTAURANTS +" = ?";
 			PreparedStatement pstmt = conn.prepareStatement(query);
 			pstmt.setInt(1, (restaurantMeal.getTotalMeals() - 1));
-			pstmt.setInt(2, restaurantMeal.getRestaurant().getId());
+			pstmt.setDate(2, (getCurrentDate()));
+			pstmt.setInt(3, restaurantMeal.getRestaurant().getId());
 			// execute update SQL statement for restaurant meal count
 			pstmt .executeUpdate();
 			
@@ -345,6 +346,31 @@ public class MealPassConnectionDao {
 
 		return mealPass;
 	}
+	
+	private static java.sql.Date getCurrentDate() {
+	    java.util.Date today = new java.util.Date();
+	    return new java.sql.Date(today.getTime());
+	}
+	
+	public static Boolean userOrderMeal(Connection conn, String userName) {
+		
+		Boolean userExists = false;
+		String query = "Select * from " + DbConstants.Tables.TABLE_RESTAURANTS_MEAL + " where "+ DbConstants.Columns.USER_NAME +"="+userName;
+		
+		ResultSet rs = null;
+		try {
+			PreparedStatement pstmt = conn.prepareStatement(query);
+			rs = pstmt.executeQuery();
+			if((rs.getDate(DbConstants.Columns.ORDER_DATE)).compareTo(getCurrentDate()) == 0){
+				userExists = true;
+			}
+		}catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return userExists;
+	}
+	
 	/**
 	 * 
 	 * @param conn

@@ -77,10 +77,12 @@ public class DbConstants {
 		
 		// RESTAURANTSMEAL
 		public static final String USER_NAME = "userName";
+		public static final String ORDER_DATE  = "orderDate";
 		
 
 		// MEALPASS
 		public static final String MEAL_USED  = "mealUsed";
+		
 	}
 
 }
