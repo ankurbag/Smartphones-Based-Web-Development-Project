@@ -103,7 +103,7 @@ public class ConnectionDao {
 	public static User getUser(Connection conn, String username){
 		
 		User user = new User();
-		String query = "SELECT * from mealpaldb.account where username=?";
+		String query = "SELECT * from mealpaldb.user where username=?";
 		ResultSet rs = null;
 		try {
 		PreparedStatement pstmt = conn.prepareStatement(query);

@@ -10,15 +10,15 @@ public class DbConstants {
 		public static final String TABLE_ACCOUNT = "mealpaldb.account";
 		public static final String TABLE_ADDRESS = "mealpaldb.address";
 		public static final String TABLE_INGREDIENTS = "mealpaldb.ingredients";
-		public static final String TABLE_MEAL = "mealpaldb.meal";
-		public static final String TABLE_MEAL_INGREDIENTS = "mealpaldb.meal_ingredients";
+		public static final String TABLE_MEAL = "mealpaldb.Meal";
+		public static final String TABLE_MEAL_INGREDIENTS = "mealpaldb.Meal_Ingredients";
 		public static final String TABLE_MEALPASS_OPTION = "mealpaldb.mealPassOptions";
-		public static final String TABLE_MEAL_PREFERENCE = "mealpaldb.mealpreference";
-		public static final String TABLE_RESTAURANTS = "mealpaldb.restaurants";
-		public static final String TABLE_RESTAURANTS_INGREDIENTS = "mealpaldb.restaurants_ingredients";
+		public static final String TABLE_MEAL_PREFERENCE = "mealpaldb.MealPreference";
+		public static final String TABLE_RESTAURANTS = "mealpaldb.Restaurants";
+		public static final String TABLE_RESTAURANTS_INGREDIENTS = "mealpaldb.Restaurants_Ingredients";
 		public static final String TABLE_RESTAURANTS_MEAL = "mealpaldb.RestaurantsMeal";
 		public static final String TABLE_USER = "mealpaldb.user";
-		public static final String TABLE_MEALPASS = "mealpaldb.mealpass";
+		public static final String TABLE_MEALPASS = "mealpaldb.MealPass";
 	}
 
 	public class Columns {
