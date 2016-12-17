@@ -8,6 +8,7 @@
 
 #import <AFNetworking/AFNetworking.h>
 #import "Response.h"
+#import "BaseRequestArgs.h"
 
 @interface BaseRequest :NSObject
     
@@ -16,5 +17,6 @@
 
 -(void) executeWithRequestUrl : (NSString *)requestUrl withParameters:(NSDictionary*)parameters;
 -(void) executeOnComplete : (void (^)(Response *))onSuccess onError: (void (^)(NSError *))onError;
+- (BaseRequestArgs*) getBaseParameters;
 
 @end

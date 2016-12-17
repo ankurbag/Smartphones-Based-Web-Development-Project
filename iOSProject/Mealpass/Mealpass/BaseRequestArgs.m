@@ -10,6 +10,10 @@
 
 @implementation BaseRequestArgs
 
-
+-(void) setBaseParameters : (BaseRequestArgs *) baseRequestArgs{
+    
+    _account = baseRequestArgs.account;
+    _user = baseRequestArgs.user;
+}
 
 @end

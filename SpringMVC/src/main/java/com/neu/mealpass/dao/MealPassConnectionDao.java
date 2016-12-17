@@ -261,8 +261,8 @@ public class MealPassConnectionDao {
 					address.setState(rs.getString(DbConstants.Columns.STATE));
 					address.setZipCode(rs.getString(DbConstants.Columns.ZIP));
 					address.setCountry(rs.getString(DbConstants.Columns.COUNTRY));
-					address.setLattitude(Long.parseLong(rs.getString(DbConstants.Columns.LATITUDE)));
-					address.setLongitude(Long.parseLong(rs.getString(DbConstants.Columns.LONGITUDE)));
+					address.setLattitude(Double.parseDouble(rs.getString(DbConstants.Columns.LATITUDE)));
+					address.setLongitude(Double.parseDouble(rs.getString(DbConstants.Columns.LONGITUDE)));
 					
 					
 				}
@@ -297,8 +297,8 @@ public class MealPassConnectionDao {
 					address.setState(rs.getString(DbConstants.Columns.STATE));
 					address.setCountry(rs.getString(DbConstants.Columns.COUNTRY));
 					address.setZipCode(rs.getString(DbConstants.Columns.ZIP));
-					address.setLattitude(rs.getLong(DbConstants.Columns.LATITUDE));
-					address.setLongitude(rs.getLong(DbConstants.Columns.LONGITUDE));
+					address.setLattitude(Double.parseDouble(rs.getString(DbConstants.Columns.LATITUDE)));
+					address.setLongitude(Double.parseDouble(rs.getString(DbConstants.Columns.LONGITUDE)));
 				}
 
 			}
@@ -512,8 +512,8 @@ public class MealPassConnectionDao {
 			address.setAddress1(rs.getString(12));
 			address.setCity(rs.getString(14));
 			address.setCountry(rs.getString(17));
-			address.setLattitude(Long.parseLong(rs.getString(19)));
-			address.setLongitude(Long.parseLong(rs.getString(20)));
+			address.setLattitude(Double.parseDouble(rs.getString(19)));
+			address.setLongitude(Double.parseDouble(rs.getString(20)));
 			address.setState(rs.getString(15));
 			address.setZipCode(rs.getString(16));
 			

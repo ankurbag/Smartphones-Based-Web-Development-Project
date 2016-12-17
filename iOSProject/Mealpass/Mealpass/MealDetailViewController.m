@@ -1,24 +1,22 @@
 //
-//  SignupViewController.m
+//  MealDetailViewController.m
 //  Mealpass
 //
-//  Created by Sabrish Ramamoorthy on 12/14/16.
+//  Created by Sabrish Ramamoorthy on 12/15/16.
 //  Copyright © 2016 Sabrish Ramamoorthy. All rights reserved.
 //
 
-#import "SignupViewController.h"
-#import "User.h"
-#import "SignupRequest.h"
-@interface SignupViewController ()
+#import "MealDetailViewController.h"
+#import "OrderMealRequest.h"
+
+@interface MealDetailViewController ()
 
 @end
 
-@implementation SignupViewController
+@implementation MealDetailViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
-     _loadingAnimationView = [LoadingAnimationView new];
     UIColor *color =  [UIColor colorWithRed:255.0f/255.0f
                                       green:0.0f/255.0f
                                        blue:0.0f/255.0f
@@ -26,16 +24,46 @@
     self.navigationController.navigationBar.barTintColor = color;
     [self.navigationController.navigationBar
      setTitleTextAttributes:@{NSForegroundColorAttributeName : [UIColor whiteColor]}];
+     _loadingAnimationView = [LoadingAnimationView new];
+    [self loadData];
+}
+
+-(void) loadData{
+    
+    if(_restaurantMeal){
+        NSError *error;
+
+        NSDictionary * r = (NSDictionary*)_restaurantMeal;
+        Meal *meal = [[Meal alloc] initWithDictionary:r[@"meal"] error:&error];
+        
+        if(meal){
+            _mealNameLabel.text = meal.mealName;
+            _ingredientsLabel.text = [NSString stringWithFormat:@"%@", meal.ingredients];
+        }
+        
+        Restaurant *restaurant = [[Restaurant alloc] initWithDictionary:r[@"restaurant"] error:&error];
+        if(restaurant){
+            _restaurantLabel.text = restaurant.restaurantName;
+        }
+        
+        Response *response = [Response sharedManager];
+        if(response){
+            if(response.mealOrdered){
+                _warningLabel.hidden = NO;
+                _orderButton.hidden = YES;
+            }else{
+                _warningLabel.hidden = YES;
+                _orderButton.hidden = NO;
+            }
+        }
+       
+    }
+    
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
-}
-
--(BOOL) textFieldShouldReturn: (UITextField *) textField{
-    [textField resignFirstResponder];
-    return YES;
 }
 
 /*
@@ -48,48 +76,33 @@
 }
 */
 
-- (IBAction)onSignup:(id)sender {
-    [self onValidationSuccessful];
-}
-
--(void) onValidationSuccessful {
+- (IBAction)orderMeal:(id)sender {
     
-    User *user = [[User alloc] init];
-    Account *account = [[Account alloc] init];
-    [account setUserName:_email.text];
-    [account setPassword:_password.text];
-    [user setName: [_fName.text stringByAppendingString:_lName.text]];
-    [user setEmailAddress:_email.text];
-    [user setAccount:account];
+    OrderMealRequest *orderMealRequest = [[OrderMealRequest alloc] initWithRestaurantMeal:_restaurantMeal];
     
-    SignupRequest *signupRequest = [[SignupRequest alloc] initWithUser:user];
-    
-    [signupRequest executeOnComplete : ^(Response* response) {
+    [orderMealRequest executeOnComplete : ^(Response* response) {
         NSLog(@"%@", response);
         [_loadingAnimationView hide];
         if([Response isStatusOk:[response statusCode]]){
-        [Response saveResponse:response];
-       
+             [Response saveResponse:response];
         }else{
             [self showError:response.statusUserMessage];
         }
-      
         
     } onError: ^(NSError* error){
         NSLog(@"%@", error);
         [_loadingAnimationView hide];
-         [self showError:@"Error while Signup ! Please try again"];
+         [self showError:@"Error while Ordering meal ! Please try again"];
     }];
     
     
     [_loadingAnimationView showWithMessage:@"Loading" inView:self.view];
-    
 }
 
 -(void) showError :(NSString *) errorMessage{
     
     if(!errorMessage){
-        errorMessage = @"Error while Signup ! Please try again";
+        errorMessage = @"Error while Ordering meal ! Please try again";
     }
     
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error"

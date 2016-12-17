@@ -39,6 +39,18 @@
 		D03D40911E0079FA0006261F /* BaseRequestArgs.m in Sources */ = {isa = PBXBuildFile; fileRef = D03D40901E0079FA0006261F /* BaseRequestArgs.m */; };
 		D03D409C1E00B29A0006261F /* LoadingAnimationView.m in Sources */ = {isa = PBXBuildFile; fileRef = D03D409A1E00B29A0006261F /* LoadingAnimationView.m */; };
 		D03D409D1E00B29A0006261F /* LoadingAnimationView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D03D409B1E00B29A0006261F /* LoadingAnimationView.xib */; };
+		D04F3AD61E03BA48002391C7 /* GetMealsRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = D04F3AC91E03BA48002391C7 /* GetMealsRequest.m */; };
+		D04F3ADC1E03BA48002391C7 /* OrderMealRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = D04F3AD41E03BA48002391C7 /* OrderMealRequest.m */; };
+		D04F3ADE1E03BA97002391C7 /* OrderMealRequestArgs.m in Sources */ = {isa = PBXBuildFile; fileRef = D04F3ADD1E03BA97002391C7 /* OrderMealRequestArgs.m */; };
+		D04F3AE51E03BAAE002391C7 /* Meal.m in Sources */ = {isa = PBXBuildFile; fileRef = D04F3AE01E03BAAE002391C7 /* Meal.m */; };
+		D04F3AE61E03BAAE002391C7 /* Restaurant.m in Sources */ = {isa = PBXBuildFile; fileRef = D04F3AE21E03BAAE002391C7 /* Restaurant.m */; };
+		D04F3AE71E03BAAE002391C7 /* RestaurantMeal.m in Sources */ = {isa = PBXBuildFile; fileRef = D04F3AE41E03BAAE002391C7 /* RestaurantMeal.m */; };
+		D04F3AF11E03BACD002391C7 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D04F3AEE1E03BACD002391C7 /* HomeViewController.m */; };
+		D04F3AF21E03BACD002391C7 /* MealDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D04F3AF01E03BACD002391C7 /* MealDetailViewController.m */; };
+		D04F3AF41E04BC29002391C7 /* MealPassOption.m in Sources */ = {isa = PBXBuildFile; fileRef = D04F3AF31E04BC29002391C7 /* MealPassOption.m */; };
+		D04F3AF81E04BE76002391C7 /* MealPass.m in Sources */ = {isa = PBXBuildFile; fileRef = D04F3AF71E04BE76002391C7 /* MealPass.m */; };
+		D04F3AFC1E04D70E002391C7 /* MealTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D04F3AFA1E04D70E002391C7 /* MealTableViewCell.m */; };
+		D04F3AFD1E04D70E002391C7 /* MealTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D04F3AFB1E04D70E002391C7 /* MealTableViewCell.xib */; };
 		D089B5C51E023DEE005DBEC1 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = D089B5C41E023DEE005DBEC1 /* User.m */; };
 		D089B5C81E023F99005DBEC1 /* SignupRequestArgs.m in Sources */ = {isa = PBXBuildFile; fileRef = D089B5C71E023F99005DBEC1 /* SignupRequestArgs.m */; };
 		D089B5CB1E0241C2005DBEC1 /* SignupRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = D089B5CA1E0241C2005DBEC1 /* SignupRequest.m */; };
@@ -123,6 +135,29 @@
 		D03D40991E00B29A0006261F /* LoadingAnimationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoadingAnimationView.h; sourceTree = "<group>"; };
 		D03D409A1E00B29A0006261F /* LoadingAnimationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoadingAnimationView.m; sourceTree = "<group>"; };
 		D03D409B1E00B29A0006261F /* LoadingAnimationView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoadingAnimationView.xib; sourceTree = "<group>"; };
+		D04F3AC81E03BA48002391C7 /* GetMealsRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GetMealsRequest.h; sourceTree = "<group>"; };
+		D04F3AC91E03BA48002391C7 /* GetMealsRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GetMealsRequest.m; sourceTree = "<group>"; };
+		D04F3AD31E03BA48002391C7 /* OrderMealRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderMealRequest.h; sourceTree = "<group>"; };
+		D04F3AD41E03BA48002391C7 /* OrderMealRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderMealRequest.m; sourceTree = "<group>"; };
+		D04F3AD51E03BA48002391C7 /* OrderMealRequestArgs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderMealRequestArgs.h; sourceTree = "<group>"; };
+		D04F3ADD1E03BA97002391C7 /* OrderMealRequestArgs.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderMealRequestArgs.m; sourceTree = "<group>"; };
+		D04F3ADF1E03BAAE002391C7 /* Meal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Meal.h; sourceTree = "<group>"; };
+		D04F3AE01E03BAAE002391C7 /* Meal.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Meal.m; sourceTree = "<group>"; };
+		D04F3AE11E03BAAE002391C7 /* Restaurant.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Restaurant.h; sourceTree = "<group>"; };
+		D04F3AE21E03BAAE002391C7 /* Restaurant.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Restaurant.m; sourceTree = "<group>"; };
+		D04F3AE31E03BAAE002391C7 /* RestaurantMeal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RestaurantMeal.h; sourceTree = "<group>"; };
+		D04F3AE41E03BAAE002391C7 /* RestaurantMeal.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RestaurantMeal.m; sourceTree = "<group>"; };
+		D04F3AED1E03BACD002391C7 /* HomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeViewController.h; sourceTree = "<group>"; };
+		D04F3AEE1E03BACD002391C7 /* HomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeViewController.m; sourceTree = "<group>"; };
+		D04F3AEF1E03BACD002391C7 /* MealDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MealDetailViewController.h; sourceTree = "<group>"; };
+		D04F3AF01E03BACD002391C7 /* MealDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MealDetailViewController.m; sourceTree = "<group>"; };
+		D04F3AF31E04BC29002391C7 /* MealPassOption.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MealPassOption.m; sourceTree = "<group>"; };
+		D04F3AF51E04BC38002391C7 /* MealPassOption.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MealPassOption.h; sourceTree = "<group>"; };
+		D04F3AF61E04BE64002391C7 /* MealPass.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MealPass.h; sourceTree = "<group>"; };
+		D04F3AF71E04BE76002391C7 /* MealPass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MealPass.m; sourceTree = "<group>"; };
+		D04F3AF91E04D70E002391C7 /* MealTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MealTableViewCell.h; sourceTree = "<group>"; };
+		D04F3AFA1E04D70E002391C7 /* MealTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MealTableViewCell.m; sourceTree = "<group>"; };
+		D04F3AFB1E04D70E002391C7 /* MealTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MealTableViewCell.xib; sourceTree = "<group>"; };
 		D089B5C41E023DEE005DBEC1 /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
 		D089B5C61E023DFC005DBEC1 /* User.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
 		D089B5C71E023F99005DBEC1 /* SignupRequestArgs.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignupRequestArgs.m; sourceTree = "<group>"; };
@@ -218,6 +253,10 @@
 		D018E1821DFF64EF0086DF02 /* controllers */ = {
 			isa = PBXGroup;
 			children = (
+				D04F3AED1E03BACD002391C7 /* HomeViewController.h */,
+				D04F3AEE1E03BACD002391C7 /* HomeViewController.m */,
+				D04F3AEF1E03BACD002391C7 /* MealDetailViewController.h */,
+				D04F3AF01E03BACD002391C7 /* MealDetailViewController.m */,
 				9678BE601E03A04100ED2E7F /* FavoritesViewController.h */,
 				9678BE611E03A04100ED2E7F /* FavoritesViewController.m */,
 				9678BE621E03A04100ED2E7F /* MyProfileViewController.h */,
@@ -253,6 +292,12 @@
 		D018E1911E005D2C0086DF02 /* request */ = {
 			isa = PBXGroup;
 			children = (
+				D04F3ADD1E03BA97002391C7 /* OrderMealRequestArgs.m */,
+				D04F3AC81E03BA48002391C7 /* GetMealsRequest.h */,
+				D04F3AC91E03BA48002391C7 /* GetMealsRequest.m */,
+				D04F3AD31E03BA48002391C7 /* OrderMealRequest.h */,
+				D04F3AD41E03BA48002391C7 /* OrderMealRequest.m */,
+				D04F3AD51E03BA48002391C7 /* OrderMealRequestArgs.h */,
 				D018E1921E005D5A0086DF02 /* LoginRequest.m */,
 				D018E1941E005E020086DF02 /* BaseRequestArgs.h */,
 				D03D40901E0079FA0006261F /* BaseRequestArgs.m */,
@@ -274,10 +319,20 @@
 		D018E1961E00735E0086DF02 /* model */ = {
 			isa = PBXGroup;
 			children = (
+				D04F3ADF1E03BAAE002391C7 /* Meal.h */,
+				D04F3AE01E03BAAE002391C7 /* Meal.m */,
+				D04F3AE11E03BAAE002391C7 /* Restaurant.h */,
+				D04F3AE21E03BAAE002391C7 /* Restaurant.m */,
+				D04F3AE31E03BAAE002391C7 /* RestaurantMeal.h */,
+				D04F3AE41E03BAAE002391C7 /* RestaurantMeal.m */,
 				D018E1971E0073760086DF02 /* Account.h */,
 				D03D408E1E0079D50006261F /* Account.m */,
 				D089B5C41E023DEE005DBEC1 /* User.m */,
 				D089B5C61E023DFC005DBEC1 /* User.h */,
+				D04F3AF31E04BC29002391C7 /* MealPassOption.m */,
+				D04F3AF51E04BC38002391C7 /* MealPassOption.h */,
+				D04F3AF61E04BE64002391C7 /* MealPass.h */,
+				D04F3AF71E04BE76002391C7 /* MealPass.m */,
 			);
 			name = model;
 			sourceTree = "<group>";
@@ -294,6 +349,9 @@
 		D03D40921E00A83D0006261F /* view */ = {
 			isa = PBXGroup;
 			children = (
+				D04F3AF91E04D70E002391C7 /* MealTableViewCell.h */,
+				D04F3AFA1E04D70E002391C7 /* MealTableViewCell.m */,
+				D04F3AFB1E04D70E002391C7 /* MealTableViewCell.xib */,
 				D03D40991E00B29A0006261F /* LoadingAnimationView.h */,
 				D03D409A1E00B29A0006261F /* LoadingAnimationView.m */,
 				D03D409B1E00B29A0006261F /* LoadingAnimationView.xib */,
@@ -391,6 +449,7 @@
 			files = (
 				D018E16D1DFF63870086DF02 /* LaunchScreen.storyboard in Resources */,
 				960071491E02750D00A3AC96 /* Home.storyboard in Resources */,
+				D04F3AFD1E04D70E002391C7 /* MealTableViewCell.xib in Resources */,
 				D018E16A1DFF63870086DF02 /* Assets.xcassets in Resources */,
 				D03D409D1E00B29A0006261F /* LoadingAnimationView.xib in Resources */,
 				D018E1681DFF63870086DF02 /* Main.storyboard in Resources */,
@@ -413,13 +472,21 @@
 			files = (
 				9678BE641E03A04100ED2E7F /* FavoritesViewController.m in Sources */,
 				D0287CB91E00C85900884F2C /* Response.m in Sources */,
+				D04F3ADC1E03BA48002391C7 /* OrderMealRequest.m in Sources */,
+				D04F3AF21E03BACD002391C7 /* MealDetailViewController.m in Sources */,
 				D018E1651DFF63870086DF02 /* ViewController.m in Sources */,
+				D04F3AE51E03BAAE002391C7 /* Meal.m in Sources */,
+				D04F3AF41E04BC29002391C7 /* MealPassOption.m in Sources */,
 				D03D408F1E0079D50006261F /* Account.m in Sources */,
 				D03D40911E0079FA0006261F /* BaseRequestArgs.m in Sources */,
 				D018E1621DFF63870086DF02 /* AppDelegate.m in Sources */,
+				D04F3AFC1E04D70E002391C7 /* MealTableViewCell.m in Sources */,
+				D04F3AF81E04BE76002391C7 /* MealPass.m in Sources */,
 				D089B5C51E023DEE005DBEC1 /* User.m in Sources */,
+				D04F3AE71E03BAAE002391C7 /* RestaurantMeal.m in Sources */,
 				D03D409C1E00B29A0006261F /* LoadingAnimationView.m in Sources */,
 				D018E1851DFF65F80086DF02 /* LoginControllerViewController.m in Sources */,
+				D04F3ADE1E03BA97002391C7 /* OrderMealRequestArgs.m in Sources */,
 				D00400BA1E00D610000CA38E /* BaseRequest.m in Sources */,
 				9678BE651E03A04100ED2E7F /* MyProfileViewController.m in Sources */,
 				960071441E0274EC00A3AC96 /* InviteViewController.m in Sources */,
@@ -428,7 +495,10 @@
 				D018E15F1DFF63870086DF02 /* main.m in Sources */,
 				960071451E0274EC00A3AC96 /* SidebarTableViewController.m in Sources */,
 				D018E1981E0073760086DF02 /* Account.h in Sources */,
+				D04F3AD61E03BA48002391C7 /* GetMealsRequest.m in Sources */,
+				D04F3AF11E03BACD002391C7 /* HomeViewController.m in Sources */,
 				960071421E0274EC00A3AC96 /* MainViewController.m in Sources */,
+				D04F3AE61E03BAAE002391C7 /* Restaurant.m in Sources */,
 				D018E1931E005D5A0086DF02 /* LoginRequest.m in Sources */,
 				D0B0A21F1E0219B6005B4D60 /* SignupViewController.m in Sources */,
 				960071431E0274EC00A3AC96 /* HistoryViewController.m in Sources */,

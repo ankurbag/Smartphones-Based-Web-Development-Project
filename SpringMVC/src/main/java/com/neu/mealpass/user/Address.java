@@ -9,8 +9,8 @@ public class Address {
 	private String state;
 	private String zipCode;
 	private String country;
-	private long lattitude;
-	private long longitude;
+	private double lattitude;
+	private double longitude;
 	
 	public int getAddressid() {
 		return addressid;
@@ -54,14 +54,18 @@ public class Address {
 	public void setCountry(String country) {
 		this.country = country;
 	}
-	public long getLattitude() {
+	
+	public double getLattitude() {
 		return lattitude;
 	}
-	public void setLattitude(long lattitude) {
+	public void setLattitude(double lattitude) {
 		this.lattitude = lattitude;
 	}
-	public long getLongitude() {
+	public double getLongitude() {
 		return longitude;
+	}
+	public void setLongitude(double longitude) {
+		this.longitude = longitude;
 	}
 	public void setLongitude(long longitude) {
 		this.longitude = longitude;

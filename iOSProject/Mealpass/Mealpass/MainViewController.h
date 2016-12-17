@@ -7,8 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "RestaurantMeal.h"
+#import "LoadingAnimationView.h"
 
 @interface MainViewController : UIViewController
 
+@property  LoadingAnimationView *loadingAnimationView;
+@property (weak, nonatomic) IBOutlet UITableView *mealTableVIew;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *sidebarButton;
+@property NSArray<RestaurantMeal*> *restaurantMeals;
 @end

@@ -8,7 +8,6 @@
 
 #import <Foundation/Foundation.h>
 #import "Response.h"
-
 @implementation Response
 
 + (id)sharedManager {
@@ -16,6 +15,7 @@
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         response = [[self alloc] init];
+        response.mealOrdered = NO;
     });
     return response;
 }
@@ -32,6 +32,36 @@
         [actualResponse setUser:response.user];
     }
     
+    if(response.restaurantMeal){
+        [actualResponse setRestaurantMeal:response.restaurantMeal];
+    }
+    
+    if(response.mealOrdered){
+        [actualResponse setMealOrdered: response.mealOrdered];
+    }
+    
+    if(response.mealPassOptions){
+        [actualResponse setMealPassOptions:response.mealPassOptions];
+    }
+    
+    if(response.mealPass){
+        [actualResponse setMealPass:response.mealPass];
+    }
+    
+    if(response.userRestaurantMeal){
+        [actualResponse setUserRestaurantMeal:response.userRestaurantMeal];
+    }
+    
+   }
+
++(BOOL) isStatusOk : (NSString*)statusCode{
+    
+    if([statusCode isEqualToString:@"STATUS_OK"]){
+        return YES;
+    }
+    
+    return NO;
 }
+
 
 @end
