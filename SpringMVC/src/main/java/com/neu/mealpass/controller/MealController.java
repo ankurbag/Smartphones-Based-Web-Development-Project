@@ -2,6 +2,7 @@ package com.neu.mealpass.controller;
 
 import java.io.IOException;
 import java.sql.Connection;
+import java.sql.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -18,6 +19,7 @@ import com.neu.mealpass.dao.MealPassConnectionDao;
 import com.neu.mealpass.meal.MealPass;
 import com.neu.mealpass.meal.MealPassOption;
 import com.neu.mealpass.meal.RestaurantMeal;
+import com.neu.mealpass.request.MealPassBuyRequest;
 import com.neu.mealpass.request.MealRequest;
 import com.neu.mealpass.request.Request;
 import com.neu.mealpass.response.Response;
@@ -97,6 +99,69 @@ public class MealController {
 			}
 		}
 	}
+	
+	@RequestMapping(value = "/buyMealPass**", method = RequestMethod.POST)
+	public void buyMealPass(HttpServletRequest request,HttpServletResponse response, @RequestBody String requestBody){
+	
+		System.out.println(TAG+" buyMealPass "+requestBody);
+		StatusCode statusCode = StatusCode.STATUS_ERROR;
+		Gson gson = new Gson();
+		if(requestBody != null){
+			MealPassBuyRequest responseRequest = gson.fromJson(requestBody, MealPassBuyRequest.class);
+			Account account = responseRequest.getAccount();
+			if(account != null){
+				Connection connection = ConnectionDao.getConnection();
+				if(ConnectionDao.isAccountValid(connection, account)){
+					User user = responseRequest.getUser();
+					if(user != null){
+						
+						MealPassOption mealPassOption = responseRequest.getMealPassOption();
+						 java.util.Date today = new java.util.Date();
+						 long endTime = today.getTime() + (Long.parseLong(mealPassOption.getDurationInMinutes() )* 60000);
+						 Date endDate = new java.sql.Date(endTime);
+						 
+						MealPass mealPass = MealPassConnectionDao.setMealPass(connection, account.getUserName(),
+								mealPassOption.getMealPassName(), mealPassOption.getTotalMeals(), "0", endDate.toString(), MealPassConnectionDao.getCurrentDate().toString());
+							Response response2 = new Response(); 
+							response2.setAccount(account);
+							statusCode = StatusCode.STATUS_OK;
+							response2.setStatusCode(StatusCode.STATUS_OK);
+							String json = gson.toJson(response2);
+							System.out.println("buyMealPass Response : "+json);
+							try {
+								response.addHeader("Content-type", "application/json");
+								response.setContentType("application/json");
+								response.getWriter().write(json);
+							} catch (IOException e) {
+								e.printStackTrace();
+							}
+						
+					}
+					
+					
+				}else{
+					statusCode = StatusCode.ACCOUNT_INVALID;
+				}
+			}
+		}
+		
+		if(!Response.isStatusOk(statusCode)){
+			Response response2 = new Response(); 
+			response2.setStatusCode(statusCode);
+			response2.setStatusUserMessage("Error in ordering meals");
+			String json = gson.toJson(response2);
+			System.out.println("orderMeal Response : "+json);
+			try {
+				response.addHeader("Content-type", "application/json");
+				response.setContentType("application/json");
+				response.getWriter().write(json);
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
+		
+	}
+	
 	
 	@RequestMapping(value = "/orderMeal**", method = RequestMethod.POST)
 	public void orderMeal(HttpServletRequest request,HttpServletResponse response, @RequestBody String requestBody){
