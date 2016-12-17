@@ -26,10 +26,22 @@
         } else {
             
             NSError *error;
-            Response *response = [[Response alloc] initWithDictionary:responseObject error:&error];
-            self.onSuccess(response);
             
-            NSLog(@"%@ %@", response, responseObject);
+            
+            NSData *jsonData = [NSJSONSerialization dataWithJSONObject:responseObject
+                                                               options:(NSJSONWritingOptions)    (YES ? NSJSONWritingPrettyPrinted : 0)
+                                                                 error:&error];
+            
+            if (jsonData) {
+                
+                NSString* json = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
+                Response *response = [[Response alloc] initWithString:json error:&error];
+                self.onSuccess(response);
+                
+                NSLog(@"%@ %@", response, responseObject);
+            }
+            
+           
         }
     }];
     [dataTask resume];
@@ -41,5 +53,19 @@
     self.onError = onError;
     
 }
+
+- (BaseRequestArgs*) getBaseParameters{
+    
+    BaseRequestArgs* baseRequestArgs = [[BaseRequestArgs alloc] init];
+    Response *response = [Response sharedManager];
+    if(response){
+        
+        [baseRequestArgs setUser:[response user]];
+        [baseRequestArgs setAccount:[response account]];
+    }
+    
+    return baseRequestArgs;
+}
+
 
 @end

@@ -53,8 +53,7 @@
 }
 
 - (IBAction)signIn:(id)sender {
-    [self performSegueWithIdentifier:@"home" sender:self];
-    //[self onValidationSuccessful];
+    [self onValidationSuccessful];
    
 }
 
@@ -62,18 +61,39 @@
     LoginRequest *loginRequest = [[LoginRequest alloc] initWithUsername:_usernameTextField.text andPassword:_passwordTextfield.text];
     [loginRequest executeOnComplete : ^(Response* response) {
         
-        [Response saveResponse:response];
-        NSLog(@"%@", response);
-        NSLog(@"saved response %@", [Response sharedManager]);
-        [_loadingAnimationView hide];
+         [_loadingAnimationView hide];
+        if([Response isStatusOk:[response statusCode]]){
+            [Response saveResponse:response];
+            NSLog(@"%@", response);
+            NSLog(@"saved response %@", [Response sharedManager]);
+            [self performSegueWithIdentifier:@"home" sender:self];
+        }else{
+            
+            [self showError:response.statusUserMessage];
+        }
         
     } onError: ^(NSError* error){
         NSLog(@"%@", error);
         [_loadingAnimationView hide];
+         [self showError:@"Error while Login ! Please try again"];
     }];
     
     
     [_loadingAnimationView showWithMessage:@"Loading" inView:self.view];
 
+}
+
+-(void) showError :(NSString *) errorMessage{
+    
+    if(!errorMessage){
+        errorMessage = @"Error while Login ! Please try again";
+    }
+    
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error"
+                                                    message:errorMessage
+                                                   delegate:self
+                                          cancelButtonTitle:@"OK"
+                                          otherButtonTitles:nil];
+    [alert show];
 }
 @end

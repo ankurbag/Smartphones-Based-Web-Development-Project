@@ -6,7 +6,7 @@
 //  Copyright © 2016 Sabrish Ramamoorthy. All rights reserved.
 //
 #import <JSONModel/JSONModel.h>
-#import "Account.h"
+#import "User.h"
 
 @interface BaseRequestArgs : JSONModel
 
@@ -19,5 +19,8 @@
  */
 
 @property (nonatomic) Account *account;
+@property (nonatomic) User* user;
+
+-(void) setBaseParameters : (BaseRequestArgs *) baseRequestArgs;
 
 @end
