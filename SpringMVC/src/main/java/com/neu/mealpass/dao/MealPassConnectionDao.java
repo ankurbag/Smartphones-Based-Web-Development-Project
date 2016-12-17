@@ -239,6 +239,7 @@ public class MealPassConnectionDao {
 	 */
 	public static Restaurant getRestaurant(Connection conn, int restaurantId){
 		Restaurant restaurant = null;
+		Address address = new Address();
 		String query = "Select * from " + DbConstants.Tables.TABLE_RESTAURANTS + " where "+ DbConstants.Columns.ID_RESTAURANTS +"="+restaurantId;
 
 		ResultSet rs = null;
@@ -250,7 +251,19 @@ public class MealPassConnectionDao {
 					restaurant = new Restaurant();
 					restaurant.setId(restaurantId);
 					restaurant.setRestaurantName(rs.getString(DbConstants.Columns.NAME_RESTAURANT));
-					restaurant.setAddress(getAddress(conn, rs.getInt(DbConstants.Columns.ADDRESSID)) );
+					restaurant.setRatings(rs.getString(DbConstants.Columns.RATING));
+					//restaurant.setAddress(getAddress(conn, rs.getInt(DbConstants.Columns.ADDRESSID)) );
+					restaurant.setAddress(address);
+					address.setAddress1(rs.getString(DbConstants.Columns.ADDRESS1));
+					address.setAddress1(rs.getString(DbConstants.Columns.ADDRESS2));
+					address.setCity(rs.getString(DbConstants.Columns.CITY));
+					address.setState(rs.getString(DbConstants.Columns.STATE));
+					address.setZipCode(rs.getString(DbConstants.Columns.ZIP));
+					address.setCountry(rs.getString(DbConstants.Columns.COUNTRY));
+					address.setLattitude(Long.parseLong(rs.getString(DbConstants.Columns.LATITUDE)));
+					address.setLongitude(Long.parseLong(rs.getString(DbConstants.Columns.LONGITUDE)));
+					
+					
 				}
 			}
 
@@ -371,6 +384,9 @@ public class MealPassConnectionDao {
 		return userExists;
 	}
 	
+
+
+	
 	/**
 	 * 
 	 * @param conn
@@ -408,6 +424,57 @@ public class MealPassConnectionDao {
 	
 	public static RestaurantMeal getUserMeal(Connection connection, String username ){
 		RestaurantMeal restaurantMeal = null; // return restaurantMeal if exist else null
+		Meal meal = new Meal();
+		Restaurant restaurant = new Restaurant();
+		Address address = new Address();
+			/*Database query is: 
+		select * from mealpaldb.Meal a inner join mealpaldb.RestaurantsMeal b 
+		on a.idMeal = b.idMeal 
+	    inner join mealpaldb.Restaurants c on b.idRestaurants = c.idRestaurants
+	    where userName = 'bagankur@gmail.com' and b.orderDate = '2016-12-16';*/
+		
+		
+		String query = "select * from mealpaldb.Meal a inner join mealpaldb.RestaurantsMeal b "+
+		"on a.idMeal = b.idMeal inner join mealpaldb.Restaurants c on "+
+		"b.idRestaurants = c.idRestaurants where userName = ? and b.orderDate = ?";
+		
+		ResultSet rs = null;
+		try {
+		PreparedStatement pstmt = connection.prepareStatement(query);
+
+		pstmt.setString(1, username);
+		pstmt.setDate(2, getCurrentDate());
+		rs = pstmt.executeQuery();
+		if (rs != null && rs.next()) {
+			restaurantMeal = new RestaurantMeal();
+			restaurantMeal.setMeal(meal);
+			restaurantMeal.setRestaurant(restaurant);
+			
+			meal.setId(rs.getInt(1));
+			meal.setMealName(rs.getString(2));
+			meal.setMealTypeEnum(MealTypeEnum.valueOf(rs.getString(3)));
+			meal.setMealPortion(MealPortion.valueOf(rs.getString(4)));
+			
+			restaurant.setId(rs.getInt(5));
+			restaurant.setAddress(address);
+			
+			address.setAddress1(rs.getString(12));
+			address.setCity(rs.getString(14));
+			address.setCountry(rs.getString(17));
+			address.setLattitude(Long.parseLong(rs.getString(19)));
+			address.setLongitude(Long.parseLong(rs.getString(20)));
+			address.setState(rs.getString(15));
+			address.setZipCode(rs.getString(16));
+			
+			restaurant.setRatings(rs.getString(18));
+			restaurant.setRestaurantName(rs.getString(11));
+			
+		}
+
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 		return restaurantMeal;
 	}

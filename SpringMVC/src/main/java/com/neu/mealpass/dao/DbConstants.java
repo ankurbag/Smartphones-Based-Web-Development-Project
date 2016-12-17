@@ -16,7 +16,7 @@ public class DbConstants {
 		public static final String TABLE_MEAL_PREFERENCE = "mealpaldb.mealpreference";
 		public static final String TABLE_RESTAURANTS = "mealpaldb.restaurants";
 		public static final String TABLE_RESTAURANTS_INGREDIENTS = "mealpaldb.restaurants_ingredients";
-		public static final String TABLE_RESTAURANTS_MEAL = "mealpaldb.restaurantsMeal";
+		public static final String TABLE_RESTAURANTS_MEAL = "mealpaldb.RestaurantsMeal";
 		public static final String TABLE_USER = "mealpaldb.user";
 		public static final String TABLE_MEALPASS = "mealpaldb.mealpass";
 	}
@@ -46,7 +46,7 @@ public class DbConstants {
 		public static final String INGREDIENTS_LIKE = "ingredients_like";
 
 		// MEAL
-		public static final String ID_MEAL = "idmeal";
+		public static final String ID_MEAL = "idMeal";
 		public static final String MEAL_NAME = "mealName";
 		public static final String MEAL_TYPE_ENUM = "mealTypeEnum";
 		public static final String MEALPORTION = "mealPortion";
@@ -68,6 +68,8 @@ public class DbConstants {
 		// RESTAURANTS
 		public static final String ID_RESTAURANTS = "idRestaurants";
 		public static final String NAME_RESTAURANT = "name";
+		public static final String RATING = "Rating";
+		
 
 		// USER
 		public static final String FIRST_NAME = "first_name";

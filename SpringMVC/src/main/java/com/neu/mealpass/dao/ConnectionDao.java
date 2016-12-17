@@ -103,9 +103,29 @@ public class ConnectionDao {
 	public static User getUser(Connection conn, String username){
 		
 		User user = new User();
-		String query = "SELECT * from mealpaldb.account where username=? and password=?";
+		String query = "SELECT * from mealpaldb.account where username=?";
 		ResultSet rs = null;
+		try {
+		PreparedStatement pstmt = conn.prepareStatement(query);
+
+		pstmt.setString(1, username);
 		
+		rs = pstmt.executeQuery();
+		if (rs != null && rs.next()) {
+			
+			user.setId(rs.getInt(1));
+			user.setUsername(rs.getString(2));
+			user.setFirstName(rs.getString(3));
+			user.setLastName(rs.getString(4));
+			user.setPhoneNum(rs.getString(5));
+			user.setEmailAddress(rs.getString(6));
+			user.setAddressId(rs.getInt(7));
+		}
+
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		return user;
 	}
 
