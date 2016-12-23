@@ -10,7 +10,7 @@
 #import "GetMealsRequest.h"
 #import "MealDetailViewController.h"
 #import "DeleteMealRequest.h"
-
+#define RAND_FROM_TO(min, max) (min + arc4random_uniform(max - min + 1))
 @interface MainViewController ()
 
 @end
@@ -19,7 +19,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-
+    
     UIColor *color =  [UIColor colorWithRed:255.0f/255.0f
                                       green:0.0f/255.0f
                                        blue:0.0f/255.0f
@@ -27,7 +27,7 @@
     self.navigationController.navigationBar.barTintColor = color;
     [self.navigationController.navigationBar
      setTitleTextAttributes:@{NSForegroundColorAttributeName : [UIColor whiteColor]}];
-
+    
     SWRevealViewController *revealViewController = self.revealViewController;
     if ( revealViewController )
     {
@@ -35,8 +35,8 @@
         [self.sidebarButton setAction: @selector( revealToggle: )];
         [self.view addGestureRecognizer:self.revealViewController.panGestureRecognizer];
     }
-     _loadingAnimationView = [LoadingAnimationView new];
-     //[self.view addConstraint:[NSLayoutConstraint constraintWithItem:self.orderedMealView attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1.0 constant:0]];
+    _loadingAnimationView = [LoadingAnimationView new];
+    //[self.view addConstraint:[NSLayoutConstraint constraintWithItem:self.orderedMealView attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1.0 constant:0]];
     self.orderMealViewHeight = 0;
     [self getMeals];
 }
@@ -46,28 +46,28 @@
     GetMealsRequest *getMealRequest = [[GetMealsRequest alloc] init];
     
     [getMealRequest executeOnComplete : ^(Response* response) {
-         NSLog(@"%@", response);
-         [_loadingAnimationView hide];
+        NSLog(@"%@", response);
+        [_loadingAnimationView hide];
         if(response){
-              if([Response isStatusOk:[response statusCode]]){
-                   [Response saveResponse:response];
-                  _restaurantMeals = response.restaurantMeal;
-                  if(_restaurantMeals){
-                      [_mealTableVIew reloadData];
-                  }
-                  [self checkMealBought];
-              }else{
-                  [self showError:response.statusUserMessage];
-              }
+            if([Response isStatusOk:[response statusCode]]){
+                [Response saveResponse:response];
+                _restaurantMeals = response.restaurantMeal;
+                if(_restaurantMeals){
+                    [_mealTableVIew reloadData];
+                }
+                [self checkMealBought];
+            }else{
+                [self showError:response.statusUserMessage];
+            }
             
         }
-       
+        
         
     } onError: ^(NSError* error){
         NSLog(@"%@", error);
         [_loadingAnimationView hide];
         [self showError:@"Error while getting meals ! Please try again"];
-
+        
     }];
     
     
@@ -80,7 +80,7 @@
     if(response){
         if(response.mealOrdered){
             _orderedMealView.hidden = NO;
-           [self.view addConstraint:[NSLayoutConstraint constraintWithItem:self.orderedMealView attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1.0 constant:123]];
+            [self.view addConstraint:[NSLayoutConstraint constraintWithItem:self.orderedMealView attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1.0 constant:123]];
             RestaurantMeal * restaurantMeal = [response userRestaurantMeal];
             Meal *meal = [restaurantMeal meal];
             
@@ -93,7 +93,7 @@
             if(restaurant){
                 _restaurantNameLabel.text = restaurant.restaurantName;
             }
-
+            
             
         }else{
             _orderedMealView.hidden = YES;
@@ -120,7 +120,9 @@
     
     return 0;
 }
-
+- (NSInteger)randomValueBetween:(NSInteger)min and:(NSInteger)max {
+    return (NSInteger)(min + arc4random_uniform(max - min + 1));
+}
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -136,16 +138,19 @@
     
     RestaurantMeal *restaurantMeal = [_restaurantMeals objectAtIndex:indexPath.row];
     if(restaurantMeal){
-         NSError *error;
+        NSError *error;
         NSDictionary * r = (NSDictionary*)restaurantMeal;
-         Restaurant *restaurant = [[Restaurant alloc] initWithDictionary:r[@"restaurant"] error:&error];
+        Restaurant *restaurant = [[Restaurant alloc] initWithDictionary:r[@"restaurant"] error:&error];
         if(restaurant){
-             cell.hotelNameLabel.text = [restaurant restaurantName];
+            cell.hotelNameLabel.text = [restaurant restaurantName];
         }
         Meal *meal = [[Meal alloc] initWithDictionary:r[@"meal"] error:&error];
         if(meal){
-             cell.mealLabel.text = [meal mealName];
+            cell.mealLabel.text = [meal mealName];
         }
+        NSInteger myInteger = RAND_FROM_TO(1,17);
+        NSString* yString = [NSString stringWithFormat:@"appetite-slider-%ld.jpg",(long)myInteger];
+        cell.mealImageView.image = [UIImage imageNamed:yString];
     }
     
     return cell;
@@ -154,7 +159,7 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     // Navigation logic may go here, for example:
     // Create the next view controller.
-   [self performSegueWithIdentifier:@"mealDetailSegue" sender:self];
+    [self performSegueWithIdentifier:@"mealDetailSegue" sender:self];
 }
 
 
@@ -162,7 +167,7 @@
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-   
+    
     NSIndexPath *indexPath = [_mealTableVIew indexPathForSelectedRow];
     if ([[segue identifier] isEqualToString:@"mealDetailSegue"]) {
         
@@ -170,7 +175,7 @@
         RestaurantMeal * restaurantMeal = [self.restaurantMeals objectAtIndex:indexPath.row];
         vc.restaurantMeal = restaurantMeal;
     }
-
+    
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -199,32 +204,32 @@
     Response *response = [Response sharedManager];
     if(response){
         if(response.mealOrdered){
-
-    DeleteMealRequest *deleteMealRequest = [[DeleteMealRequest alloc] initWithRestaurantMeal:[response userRestaurantMeal]];
-    
-    [deleteMealRequest executeOnComplete : ^(Response* response) {
-            NSLog(@"%@", response);
-            [_loadingAnimationView hide];
-            if([Response isStatusOk:[response statusCode]]){
-                Response *res = [Response sharedManager];
-                [res setUserRestaurantMeal:nil];
-                [res setMealOrdered:NO];
+            
+            DeleteMealRequest *deleteMealRequest = [[DeleteMealRequest alloc] initWithRestaurantMeal:[response userRestaurantMeal]];
+            
+            [deleteMealRequest executeOnComplete : ^(Response* response) {
+                NSLog(@"%@", response);
+                [_loadingAnimationView hide];
+                if([Response isStatusOk:[response statusCode]]){
+                    Response *res = [Response sharedManager];
+                    [res setUserRestaurantMeal:nil];
+                    [res setMealOrdered:NO];
+                    
+                    [Response saveResponse:response];
+                    [self getMeals];
+                }else{
+                    [self showError:response.statusUserMessage];
+                }
                 
-               [Response saveResponse:response];
-                [self getMeals];
-            }else{
-                [self showError:response.statusUserMessage];
-            }
-        
-        } onError: ^(NSError* error){
-            NSLog(@"%@", error);
-            [_loadingAnimationView hide];
-            [self showError:@"Error while deleting meal ! Please try again"];
-        }];
-    
-    
-        [_loadingAnimationView showWithMessage:@"Loading" inView:self.view];
-      }
+            } onError: ^(NSError* error){
+                NSLog(@"%@", error);
+                [_loadingAnimationView hide];
+                [self showError:@"Error while deleting meal ! Please try again"];
+            }];
+            
+            
+            [_loadingAnimationView showWithMessage:@"Loading" inView:self.view];
+        }
     }
 }
 @end

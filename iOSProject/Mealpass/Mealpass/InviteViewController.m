@@ -8,6 +8,7 @@
 
 #import "InviteViewController.h"
 #import "SWRevealViewController.h"
+#import "ChatRequest.h"
 
 @interface InviteViewController ()
 
@@ -17,8 +18,14 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.title = @"Invite Friends";
-    self.photoImageView.image = [UIImage imageNamed:self.photoFilename];
+    UIColor *color =  [UIColor colorWithRed:255.0f/255.0f
+                                      green:0.0f/255.0f
+                                       blue:0.0f/255.0f
+                                      alpha:0.9f];
+    self.navigationController.navigationBar.barTintColor = color;
+    [self.navigationController.navigationBar
+     setTitleTextAttributes:@{NSForegroundColorAttributeName : [UIColor whiteColor]}];
+   
 
     SWRevealViewController *revealViewController = self.revealViewController;
     if ( revealViewController )
@@ -28,11 +35,51 @@
         [self.view addGestureRecognizer:self.revealViewController.panGestureRecognizer];
     }
 
+    _chatArray = [[NSMutableArray alloc] init];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+-(void) askBotRequest : (NSString*) chatMessage{
+    
+    ChatRequest *chatRequest = [[ChatRequest alloc] initWithUserChat:chatMessage];
+    [chatRequest executeOnComplete : ^(Response* response) {
+        
+        if([Response isStatusOk:[response statusCode]]){
+            //[Response saveResponse:response];
+            NSString *botMessage = [response statusUserMessage];
+            UILabel * label=[[UILabel alloc]initWithFrame:CGRectMake(10, 30*[_chatArray count], 300, 25)];//Set frame of label in your viewcontroller.
+          //   [label setBackgroundColor:[UIColor lightGrayColor]];
+             [label setFont:[UIFont systemFontOfSize:13]];
+            [label setText:[@"MealPal" stringByAppendingString:[NSString stringWithFormat:@" : %@", botMessage]]];//Set text in label.
+            [label setTextColor:[UIColor redColor]];//Set text color in label.
+            [label setTextAlignment:NSTextAlignmentLeft];//Set text alignment in label.
+            [label setBaselineAdjustment:UIBaselineAdjustmentAlignBaselines];//Set line adjustment.
+            [label setLineBreakMode:NSLineBreakByCharWrapping];//Set linebreaking mode..
+           [label setNumberOfLines:4];//Set number of lines in label.
+          //  [label.layer setCornerRadius:25.0];//Set corner radius of label to change the shape.
+          //  [label.layer setBorderWidth:2.0f];//Set border width of label.
+            [label setClipsToBounds:YES];//Set its to YES for Corner radius to work.
+         //   [label.layer setBorderColor:[UIColor blackColor].CGColor];//Set Border color.
+            [label sizeToFit];
+            [_chatScrollview insertSubview:label atIndex: [_chatArray count]];
+            [_chatArray addObject:botMessage];
+
+            
+        }else{
+            
+           // [self showError:response.statusUserMessage];
+        }
+        
+    } onError: ^(NSError* error){
+        NSLog(@"%@", error);
+        //[_loadingAnimationView hide];
+        //[self showError:@"Error while Login ! Please try again"];
+    }];
+    
 }
 
 /*
@@ -45,4 +92,30 @@
 }
 */
 
+- (IBAction)askBotHelp:(id)sender {
+    
+    NSString *helpMessage = _userChatTextField.text;
+    if(helpMessage){
+       
+       UILabel * label=[[UILabel alloc]initWithFrame:CGRectMake(10, 30*[_chatArray count], 300, 25)];//Set frame of label in your viewcontroller.
+        [label setFont:[UIFont systemFontOfSize:13]];
+    //    [label setBackgroundColor:[UIColor darkGrayColor]];//Set background color of label.
+        [label setText:[helpMessage stringByAppendingString:[NSString stringWithFormat:@" : %@", @"User"]]];//Set text in label.
+        [label setTextColor:[UIColor darkGrayColor]];//Set text color in label.
+        [label setTextAlignment:NSTextAlignmentRight];//Set text alignment in label.
+        [label setBaselineAdjustment:UIBaselineAdjustmentAlignBaselines];//Set line adjustment.
+        [label setLineBreakMode:NSLineBreakByCharWrapping];//Set linebreaking mode..
+        [label setNumberOfLines:4];//Set number of lines in label.
+    //    [label.layer setCornerRadius:5.0];//Set corner radius of label to change the shape.
+    //    [label.layer setBorderWidth:1.0f];//Set border width of label.
+        [label setClipsToBounds:YES];//Set its to YES for Corner radius to work.
+      //hkhk  [label.layer setBorderColor:[UIColor darkGrayColor].CGColor];//Set Border color.
+       // [label sizeToFit];
+        [_chatScrollview insertSubview:label atIndex: [_chatArray count]];
+         [_chatArray addObject:helpMessage];
+        [self askBotRequest:helpMessage];
+        _userChatTextField.text = @"";
+        
+    }
+}
 @end

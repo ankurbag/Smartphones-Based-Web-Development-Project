@@ -12,4 +12,10 @@
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *sidebarButton;
 @property (weak, nonatomic) IBOutlet UIImageView *photoImageView;
 @property (strong, nonatomic) NSString *photoFilename;
+@property (strong, nonatomic) IBOutlet UIView *chatView;
+@property (weak, nonatomic) IBOutlet UITextField *userChatTextField;
+@property (weak, nonatomic) IBOutlet UIScrollView *chatScrollview;
+- (IBAction)askBotHelp:(id)sender;
+
+@property NSMutableArray* chatArray;
 @end

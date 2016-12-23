@@ -319,7 +319,7 @@
             </objects>
             <point key="canvasLocation" x="-32" y="1109"/>
         </scene>
-        <!--Invite View Controller-->
+        <!--Help-->
         <scene sceneID="efi-dR-fgX">
             <objects>
                 <viewController id="P6A-sk-fWz" customClass="InviteViewController" sceneMemberID="viewController">
@@ -331,24 +331,51 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="h3C-fv-sCj">
-                                <rect key="frame" x="0.0" y="64" width="320" height="200"/>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wRn-o2-5pt">
+                                <rect key="frame" x="0.0" y="64" width="320" height="466"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="point" keyPath="contentSize">
+                                        <point key="value" x="0.0" y="1000"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </scrollView>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="WOy-7j-3ot">
+                                <rect key="frame" x="0.0" y="530" width="251" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rj5-JS-6g1">
+                                <rect key="frame" x="259" y="530" width="45" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.98992387820000005" green="0.051473257000000001" blue="0.1444984647" alpha="0.81000000000000005" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="Send">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="askBotHelp:" destination="P6A-sk-fWz" eventType="touchUpInside" id="bDA-q8-NhL"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="0.99997437000274658" blue="0.99999129772186279" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
-                    <navigationItem key="navigationItem" id="D9g-rb-RyJ">
-                        <barButtonItem key="leftBarButtonItem" image="menu" style="plain" id="aWw-Gc-7Md"/>
+                    <navigationItem key="navigationItem" title="Help" id="D9g-rb-RyJ">
+                        <barButtonItem key="leftBarButtonItem" image="menu" style="plain" id="aWw-Gc-7Md">
+                            <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="photoImageView" destination="h3C-fv-sCj" id="56g-MG-a3K"/>
+                        <outlet property="chatScrollview" destination="wRn-o2-5pt" id="9by-3R-jqE"/>
+                        <outlet property="chatView" destination="xnF-xM-SFn" id="HeS-fQ-1Ov"/>
                         <outlet property="sidebarButton" destination="aWw-Gc-7Md" id="NtS-fY-GUB"/>
+                        <outlet property="userChatTextField" destination="WOy-7j-3ot" id="5Uz-ga-LfI"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0fr-fQ-dJB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2339" y="708"/>
+            <point key="canvasLocation" x="2338.125" y="707.74647887323943"/>
         </scene>
         <!--History-->
         <scene sceneID="A3P-4N-Pec">
@@ -410,9 +437,8 @@
                                     <outlet property="delegate" destination="m5t-jO-LzE" id="Wk8-bE-LVE"/>
                                 </connections>
                             </tableView>
-                            <view hidden="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aAK-OO-I9I">
+                            <view hidden="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aAK-OO-I9I">
                                 <rect key="frame" x="16" y="64" width="288" height="123"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="YOU HAVE A MEAL RESERVED" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qaX-pz-cet">
                                         <rect key="frame" x="-16" y="0.0" width="320" height="21"/>
@@ -456,6 +482,9 @@
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="123" id="ync-NS-j8P"/>
+                                </constraints>
                             </view>
                         </subviews>
                         <color key="backgroundColor" red="1" green="0.99997437000274658" blue="0.99999129772186279" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -470,6 +499,7 @@
                         <outlet property="addressLabel" destination="H78-79-Iow" id="anq-We-Ul4"/>
                         <outlet property="mealNameLabel" destination="yI9-gl-1U6" id="gmJ-bs-n3r"/>
                         <outlet property="mealTableVIew" destination="rIZ-mG-mP9" id="tLL-rL-ueX"/>
+                        <outlet property="orderMealViewHeight" destination="ync-NS-j8P" id="7xW-IX-Ade"/>
                         <outlet property="orderedMealView" destination="aAK-OO-I9I" id="P06-cs-fhg"/>
                         <outlet property="restaurantNameLabel" destination="juH-JI-Ibt" id="iea-LT-NIS"/>
                         <outlet property="sidebarButton" destination="5Xe-1T-ag9" id="LFX-Vo-qHS"/>
